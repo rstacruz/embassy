@@ -11,8 +11,6 @@
 class User < Sequel::Model
   extend Shield::Model
 
-  one_to_one   :profile
-
   def self.fetch(email)
     first email: email
   end
@@ -35,13 +33,22 @@ class User < Sequel::Model
     errors.add(:username, 'is not present')  if @username.to_s.empty?
     errors.add(:username, 'is not unique')   if Profile[@username]
 
+    profile.valid?
+    errors[:username] += profile.errors[:id]
+
     validates_presence :email
     validates_unique :email
     validates_format /@/, :email, message: 'is not a valid email'
   end
 
   def profile
-    self[:profile] || (profile_id && Profile[profile_id])
+    @profile ||= Profile[profile_id]
+    @profile ||= Profile.new(id: @username, user: self)
+  end
+
+  def profile=(obj)
+    @profile = (obj.is_a?(Profile) || Profile.new(obj))
+    self.profile_id = @profile.id
   end
 
   # Seed
@@ -80,10 +87,7 @@ class User < Sequel::Model
   # Hooks
   
   def after_create
-    profile      = Profile.new
-    profile.id   = username
-    profile.user = self
-    profile.save
+    build_profile.save
   end
 end
 
