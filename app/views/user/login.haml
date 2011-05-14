@@ -1,0 +1,11 @@
+%form#login-form(action="/login" method="post")
+  - if @error
+    #error= @error
+  %p.username
+    %input(type='text' name='username' id='username' value='' placeholder='Username')
+  %p.password
+    %input(type='password' name='password' id='password' value='' placeholder='Password')
+  %p.submit
+    %button#login(type='submit') Login
+
+

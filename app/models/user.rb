@@ -29,7 +29,14 @@ class User < Sequel::Model
 
   def validate
     super
+
+    errors.add(:password, 'is not present')  if @password.to_s.empty?
     errors.add(:password, 'does not match')  if (!@password.to_s.empty? || !@password_confirmation.to_s.empty?) && @password != @password_confirmation
+    errors.add(:username, 'is not present')  if @username.to_s.empty?
+
+    validates_presence :email
+    validates_unique :email
+    validates_format /@/, :email, message: 'is not a valid email'
   end
 
   # Seed
@@ -49,6 +56,25 @@ class User < Sequel::Model
 
   def can?(verb, noun=nil)
     abilities && abilities.can?(verb, noun)
+  end
+
+  def username
+    @username ||= profile.username  if profile
+    @username
+  end
+
+  def username=(v)
+    @username = v
+  end
+
+  # ============================================================================ 
+  # Hooks
+  
+  def after_create
+    profile      = Profile.new
+    profile.id   = username
+    profile.user = self
+    profile.save
   end
 end
 

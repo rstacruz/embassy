@@ -1,0 +1,16 @@
+<h1>Register</h1>
+
+%form#register-form(action="/register" method="post")
+  %p{field_attr(:email)}
+    %input{type: 'text', name: 'user[email]', id: 'email', value: @user.email, placeholder: 'Email'}
+    != show_errors_for :email
+  %p{field_attr(:username)}
+    %input{type: 'text', name: 'user[username]', id: 'username', value: @user.username, placeholder: 'Username'}
+    != show_errors_for :username
+  %p{field_attr(:password)}
+    %input{type: 'password', name: 'user[password]', id: 'password', value: '', placeholder: 'Password'}
+    != show_errors_for :password
+  %p.password_confirmation
+    %input{type: 'password', name: 'user[password_confirmation]', id: 'password', value: '', placeholder: 'Confirm password'}
+  %p.submit
+    %button(type='submit') Register

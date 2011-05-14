@@ -3,13 +3,15 @@ class Main
     # Skip table creation if old tables are found.
     if database.tables == [:migrations]
       database.create_table :categories do
-        String :id, primary_key: true
+        primary_key :id
 
         String :name
       end
 
       database.create_table :users do
         primary_key :id
+
+        String :profile_id
 
         text :email
         text :crypted_password
@@ -19,6 +21,9 @@ class Main
 
       database.create_table :profiles do
         String :id, primary_key: true
+
+        foreign_key :user_id
+
         String :display_name
       end
 
