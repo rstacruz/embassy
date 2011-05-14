@@ -12,7 +12,11 @@ class Main
       redirect '/login'
     end
 
-    def ensure_anonymous
+    def ensure_authenticated!
+      ensure_authenticated User
+    end
+
+    def ensure_anonymous!
       back = request.referrer || '/'
       redirect back  if authenticated?
     end

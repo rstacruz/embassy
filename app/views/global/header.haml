@@ -9,9 +9,9 @@
           %a.you{href: R(my_profile)}
             = "@%s" % my_profile.id
         %li
-          %a{href: R(my_profile, :edit)} Edit profile
+          %a{href: '/profile/edit'} Edit profile
         %li
-          %a{href: R(my_profile, :upload)} New project
+          %a{href: '/profile/upload'} New project
 
   %nav#aux
     %ul

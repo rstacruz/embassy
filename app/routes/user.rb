@@ -1,13 +1,13 @@
 class Main
   get '/register' do
-    ensure_anonymous
+    ensure_anonymous!
 
     @user = User.new
     haml :'/user/register'
   end
 
   post '/register' do
-    ensure_anonymous
+    ensure_anonymous!
 
     @user = User.new
 
@@ -24,13 +24,13 @@ class Main
   end
 
   get '/login' do
-    ensure_anonymous
+    ensure_anonymous!
 
     haml :'user/login'
   end
 
   post '/login' do
-    ensure_anonymous
+    ensure_anonymous!
 
     if login(User, params[:username], params[:password])
       redirect '/'
@@ -41,7 +41,7 @@ class Main
   end
 
   get '/logout' do
-    ensure_authenticated User
+    ensure_authenticated!
     logout User
 
     flash "You have logged out."
@@ -49,6 +49,6 @@ class Main
   end
 
   before '/admin/*' do |page|
-    ensure_authenticated User
+    ensure_authenticated!
   end
 end

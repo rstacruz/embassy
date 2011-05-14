@@ -8,16 +8,4 @@ class Main
     
     haml :'profiles/show'
   end
-
-  get '/:profile/edit' do
-    pass  unless @profile
-    
-    haml :'profiles/edit'
-  end
-
-  get '/:profile/upload' do
-    pass  unless @profile
-    
-    haml :'profiles/upload'
-  end
 end
