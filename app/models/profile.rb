@@ -3,6 +3,8 @@
 class Profile < Sequel::Model
   RESTRICTED_NAMES = %w(profile you login logout register)
 
+  unrestrict_primary_key
+
   many_to_many  :categories,
     left_id:    :profile_id,
     right_id:   :category_id,
@@ -13,12 +15,8 @@ class Profile < Sequel::Model
     right_id:   :image_id,
     join_table: :images_profiles
 
-  def initialize(hash={}, *a)
-    id = hash.is_a?(Hash) && (hash.delete('id') || hash.delete(:id))
-
-    super hash, *a
-
-    self.id ||= id
+  def initialize(*a)
+    super
     self.display_name ||= self.id
   end
 
