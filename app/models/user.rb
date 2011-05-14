@@ -94,5 +94,9 @@ class User < Sequel::Model
   def after_create
     self.profile.save
   end
+
+  def before_destroy
+    profile.delete
+  end
 end
 

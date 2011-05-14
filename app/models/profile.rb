@@ -24,9 +24,14 @@ class Profile < Sequel::Model
 
   def validate
     super
+    self.id = self.id.downcase  if self.id.is_a?(String)
 
-    errors.add(:id, 'is not between 3 to 20 characters')  unless (3..20).include?(self.id.to_s.size)
-    errors.add(:id, 'is not allowed')  if RESTRICTED_NAMES.include?(self.id.downcase)
+    id = self.id.to_s
+
+    errors.add(:id, 'is not allowed')  if RESTRICTED_NAMES.include?(id)
+    errors.add(:id, 'must be between 3 to 20 characters')  unless (3..20).include?(id.size)
+    errors.add(:id, 'can only contain letters, numbers and underscores')  unless id =~ /^[A-Za-z0-9_]+$/
+    errors.add(:id, 'must start with a letter')  unless id =~ /^[a-z]/
   end
 
   def user=(v)
@@ -42,5 +47,9 @@ class Profile < Sequel::Model
 
   def before_save
     self.user_id = self.user.id  if self.user
+  end
+
+  def before_destroy
+    self.user.delete
   end
 end
