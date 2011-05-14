@@ -22,6 +22,10 @@ class Profile < Sequel::Model
     self.display_name ||= self.id
   end
 
+  def self.[](key)
+    super key.to_s.downcase
+  end
+
   def validate
     super
     self.id = self.id.downcase  if self.id.is_a?(String)

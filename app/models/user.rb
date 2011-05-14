@@ -11,9 +11,9 @@
 class User < Sequel::Model
   extend Shield::Model
 
-  def self.fetch(email)
-    user   = first(email: email)
-    user ||= (profile = Profile[email]) && profile.user
+  def self.fetch(str)
+    user   = first(email: str)
+    user ||= (profile = Profile[str]) && profile.user
     user
   end
 

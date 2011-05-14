@@ -28,6 +28,24 @@ class UserTest < UnitTest
     end
   end
 
+  describe "lowercase" do
+    setup do
+      @user = User.spawn(username: "EdwardK")
+    end
+
+    test "user access" do
+      assert User.fetch('edwardk') == @user
+      assert User.fetch('EdwardK') == @user
+      assert User.fetch('EDWARDK') == @user
+    end
+
+    test "profile access" do
+      assert Profile['edwardk'].user == @user
+      assert Profile['EdwardK'].user == @user
+      assert Profile['EDWARDK'].user == @user
+    end
+  end
+
   test "profile autodelete" do
     @user.destroy
     assert Profile.all.empty?
