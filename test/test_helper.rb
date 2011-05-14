@@ -1,4 +1,11 @@
 ENV["RACK_ENV"] = "test"
+require 'spork'
+
+Spork.prefork do
+end
+
+Spork.each_run do
+end
 
 require_relative '../init'
 require_relative 'factories'

@@ -1,6 +1,6 @@
 require 'fileutils'
 
-require File.expand_path('../helper', __FILE__)
+require File.expand_path('../test_helper', __FILE__)
 
 class StoryTest < UnitTest
   include Capybara

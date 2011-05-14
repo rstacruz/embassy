@@ -12,7 +12,6 @@ gem "sequel", "~> 3.23.0"
 gem "sqlite3", "~> 1.3.0"
 gem "hashie", "~> 1.0.0"
 gem "shield", "~> 0.0.3"
-gem "maruku"
 
 group :test do
   gem "contest"
@@ -20,4 +19,6 @@ group :test do
   gem "test-unit", ">= 2.2.0", require: "test/unit"
   gem "test-unit-runner-failfast", require: "test/unit/runner/failfast"
   gem "ffaker", "~> 1.4.0"
+  gem "spork", "~> 0.8.4"
+  gem "spork-testunit", "~> 0.0.5"
 end

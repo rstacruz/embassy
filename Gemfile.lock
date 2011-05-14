@@ -15,14 +15,13 @@ GEM
       ffi (~> 1.0.6)
     contest (0.1.2)
     culerity (0.2.15)
+    ffaker (1.4.0)
     ffi (1.0.7)
       rake (>= 0.8.7)
     haml (3.0.18)
     hashie (1.0.0)
     jsmin (1.0.1)
     json_pure (1.4.6)
-    maruku (0.6.0)
-      syntax (>= 1.0.0)
     mime-types (1.16)
     nokogiri (1.4.4)
     rack (1.2.1)
@@ -48,8 +47,10 @@ GEM
       sinatra (>= 0.9.4)
     sinatra-support (1.0.3)
       sinatra (>= 1.0)
+    spork (0.8.4)
+    spork-testunit (0.0.5)
+      spork (>= 0.6.0)
     sqlite3 (1.3.3)
-    syntax (1.0.0)
     test-unit (2.3.0)
     test-unit-runner-failfast (0.0.1)
       test-unit (>= 2.2)
@@ -64,10 +65,10 @@ PLATFORMS
 DEPENDENCIES
   capybara
   contest
+  ffaker (~> 1.4.0)
   haml (>= 3.0)
   hashie (~> 1.0.0)
   jsmin (~> 1.0.0)
-  maruku
   sass (~> 3.1.1)
   sequel (~> 3.23.0)
   shield (~> 0.0.3)
@@ -75,6 +76,8 @@ DEPENDENCIES
   sinatra-content-for
   sinatra-sequel (~> 0.9.0)
   sinatra-support
+  spork (~> 0.8.4)
+  spork-testunit (~> 0.0.5)
   sqlite3 (~> 1.3.0)
   test-unit (>= 2.2.0)
   test-unit-runner-failfast
