@@ -1,6 +1,8 @@
 # A profile.
 #
 class Profile < Sequel::Model
+  RESTRICTED_NAMES = %w(profile you login logout register)
+
   many_to_many  :categories,
     left_id:    :profile_id,
     right_id:   :category_id,
@@ -24,6 +26,7 @@ class Profile < Sequel::Model
     super
 
     errors.add(:id, 'is not between 3 to 20 characters')  unless (3..20).include?(self.id.to_s.size)
+    errors.add(:id, 'is not allowed')  if RESTRICTED_NAMES.include?(self.id.downcase)
   end
 
   def user=(v)
