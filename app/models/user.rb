@@ -33,10 +33,15 @@ class User < Sequel::Model
     errors.add(:password, 'is not present')  if @password.to_s.empty?
     errors.add(:password, 'does not match')  if (!@password.to_s.empty? || !@password_confirmation.to_s.empty?) && @password != @password_confirmation
     errors.add(:username, 'is not present')  if @username.to_s.empty?
+    errors.add(:username, 'is not unique')   if Profile[@username]
 
     validates_presence :email
     validates_unique :email
     validates_format /@/, :email, message: 'is not a valid email'
+  end
+
+  def profile
+    self[:profile] || (profile_id && Profile[profile_id])
   end
 
   # Seed
@@ -59,8 +64,12 @@ class User < Sequel::Model
   end
 
   def username
-    @username ||= profile.username  if profile
+    @username ||= profile.id  if profile
     @username
+  end
+
+  def display_name
+    profile && profile.display_name
   end
 
   def username=(v)

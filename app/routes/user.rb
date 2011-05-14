@@ -14,7 +14,9 @@ class Main
     begin
       @user.update(params['user'])
       flash "Okay."
+      login(User, @user.email, params['user']['password'])
       redirect '/'
+
     rescue Sequel::ValidationFailed
       @errors = @user.errors
       haml :'/user/register'

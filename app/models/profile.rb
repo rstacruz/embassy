@@ -12,4 +12,10 @@ class Profile < Sequel::Model
     left_id:    :profile_id,
     right_id:   :image_id,
     join_table: :images_profiles
+
+  def initialize(*a)
+    super
+
+    self.display_name ||= self.id
+  end
 end

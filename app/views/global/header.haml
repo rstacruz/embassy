@@ -1,0 +1,16 @@
+%header#header
+  %a#logo{href: '/'}
+    PWDO
+
+  %nav#aux
+    %ul
+      - if authenticated?
+        %li!= "Hello, %s!" % current_user.display_name
+        %li
+          %a{href: '/logout'} Logout
+      - else
+        %li
+          %a{href: '/login'} Login
+        %li
+          %a{href: '/register'} Register
+
