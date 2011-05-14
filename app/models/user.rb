@@ -12,7 +12,9 @@ class User < Sequel::Model
   extend Shield::Model
 
   def self.fetch(email)
-    first email: email
+    user   = first(email: email)
+    user ||= (profile = Profile[email]) && profile.user
+    user
   end
 
   def password=(password)
@@ -87,7 +89,7 @@ class User < Sequel::Model
   # Hooks
   
   def after_create
-    build_profile.save
+    self.profile.save
   end
 end
 
