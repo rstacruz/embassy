@@ -50,7 +50,6 @@ class User < Sequel::Model
 
   def profile=(obj)
     @profile = (obj.is_a?(Profile) || Profile.new(obj))
-    self.profile_id = @profile.id
   end
 
   # Seed
@@ -87,6 +86,10 @@ class User < Sequel::Model
 
   # ============================================================================ 
   # Hooks
+
+  def before_save
+    self.profile_id = self.profile.id  if self.profile
+  end
   
   def after_create
     self.profile.save

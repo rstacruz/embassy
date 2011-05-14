@@ -28,10 +28,16 @@ class Profile < Sequel::Model
 
   def user=(v)
     @user = v
-    self.user_id = v.id
   end
 
   def user
     @user ||= User[user_id]
+  end
+
+  # ============================================================================ 
+  # Hooks
+
+  def before_save
+    self.user_id = self.user.id  if self.user
   end
 end
