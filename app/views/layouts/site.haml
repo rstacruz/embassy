@@ -1,0 +1,7 @@
+- content_for :body do
+  != partial :'global/header'
+  #content
+    != yield
+  != partial :'global/footer'
+
+!= partial :'layouts/base'

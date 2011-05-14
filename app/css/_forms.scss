@@ -1,0 +1,55 @@
+$form-input-height: 32px !default;
+$form-accent:       #7bd !default;
+
+form {
+  $normal: 1em;
+  $small:  0.9em;
+  $height: $form-input-height;
+  $accent: $form-accent;
+
+  input, textarea {
+    display: inline-block;
+    @include box-sizing(border-box); }
+
+  label {
+    display: inline-block; }
+
+  fieldset {
+    border: 0; padding: 0; }
+
+  h3 {
+    font-size: 1em;
+    background: rgba(black, 0.1); padding: 5px; }
+
+  p {
+    label {
+      width: 100px; }
+
+    span.error {
+      @include border-radius(2px);
+      font-size: $small; margin-left: 5px;
+      background: #833; color: white; padding: 2px 5px; }
+  }
+
+  input, textarea {
+    width: 300px;
+    padding: 4px;
+    border: solid 1px #ccc;
+    @include border-radius(2px);
+    background: white; font-size: $normal;
+
+    &:focus {
+      outline: 0;
+      @include shadow(0 0 5px $accent); }
+
+    &:disabled {
+      color: #bbb; } }
+
+  input[type=radio], input[type=checkbox] {
+    width: auto; padding: 0; }
+
+  p.submit {
+    background: rgba(black, 0.1); padding: 10px;
+    text-align: center; }
+}
+

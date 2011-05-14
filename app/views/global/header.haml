@@ -2,10 +2,20 @@
   %a#logo{href: '/'}
     PWDO
 
+  - if authenticated?
+    %nav#actions
+      %ul
+        %li
+          %a.you{href: R(my_profile)}
+            = "@%s" % my_profile.id
+        %li
+          %a{href: R(my_profile, :edit)} Edit profile
+        %li
+          %a{href: R(my_profile, :upload)} New project
+
   %nav#aux
     %ul
       - if authenticated?
-        %li!= "Hello, %s!" % current_user.display_name
         %li
           %a{href: '/logout'} Logout
       - else

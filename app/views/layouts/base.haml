@@ -18,9 +18,7 @@
       != modernizr
 
   %body
-    != partial :'global/header'
-    != yield
-    != partial :'global/footer'
+    != yield_content :body
 
     - unless request.xhr?
       != jquery

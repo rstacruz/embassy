@@ -4,31 +4,6 @@ $reset-font: arial, sans-serif;
 $liteblue: #adf;
 @include ae-reset;
 
-/*
- * Header
- */
-
-#header {
-  & {
-    padding: 5px;
-    background: #333; color: #aaa;
-    @include clearfix; }
-
-  a {
-    color: $liteblue; }
-}
-
-#logo {
-  font-weight: bold;
-  float: left; }
-
-#aux {
-  & {
-    float: right; }
-
-  ul {
-    @include horiz-list; }
-
-  ul li {
-    display: block;
-    margin-left: 10px; } }
+@import 'layout';
+@import 'chrome';
+@import 'forms';

@@ -16,6 +16,10 @@ class Main
       back = request.referrer || '/'
       redirect back  if authenticated?
     end
+
+    def my_profile
+      current_user && current_user.profile
+    end
   end
 
   helpers UserHelpers

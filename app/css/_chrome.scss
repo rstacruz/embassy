@@ -1,0 +1,57 @@
+/*
+ * Header
+ */
+
+#header {
+  & {
+    font-size: 8pt;
+    padding: 10px;
+    background: #333; color: #aaa;
+    @include clearfix; }
+
+  a {
+    color: $liteblue; }
+}
+
+#logo {
+  font-weight: bold;
+  padding-right: 100px;
+  float: left; }
+
+#actions {
+  & {
+    float: left; }
+
+  ul {
+    @include horiz-list; }
+
+  ul li {
+    margin-left: 10px; }
+
+  a.you {
+    display: inline-block;
+    @include border-radius(4px);
+    margin-top: -2px;
+    background: #666; padding: 2px 10px; }
+
+  a.you:hover {
+    background: #777; text-decoration: none; }
+
+  li:not(:last-child)::after {
+    display: inline-block; margin-left: 10px;
+    content: ' / '; }
+
+  a {
+    font-weight: normal; } }
+
+#aux {
+  & {
+    float: right; }
+
+  ul {
+    @include horiz-list; }
+
+  ul li {
+    display: block;
+    margin-left: 10px; }
+}

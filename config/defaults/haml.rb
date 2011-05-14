@@ -1,3 +1,3 @@
 class Main
-  set      :haml, :escape_html => true, :layout => :layout, :ugly => true
+  set      :haml, :escape_html => true, :layout => :'layouts/site', :ugly => true
 end

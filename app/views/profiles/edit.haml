@@ -1,0 +1,9 @@
+%h1 Edit profile
+
+%form{action: R(my_profile, :edit)}
+  %fieldset
+    %p{field_attr(:username)}
+      %label Username:
+      %input{type: 'text', value: @profile.id, disabled: true}
+
+
