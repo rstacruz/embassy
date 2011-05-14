@@ -17,18 +17,13 @@ tmtags
 
 # Project (general)
 /vendor/*/vendor
-/log
-/logs
-
-# Docs
+log/*
+!log/.gitignore
 .yardoc
 doc
-
-# Config
 config/*
 !config/defaults
 !config/README
-
-# Others
+db/*.db
 .sass-cache
 .rvmrc
