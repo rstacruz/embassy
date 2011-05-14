@@ -19,4 +19,5 @@ group :test do
   gem "capybara"
   gem "test-unit", ">= 2.2.0", require: "test/unit"
   gem "test-unit-runner-failfast", require: "test/unit/runner/failfast"
+  gem "ffaker", "~> 1.4.0"
 end
