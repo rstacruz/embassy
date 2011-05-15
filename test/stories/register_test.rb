@@ -12,7 +12,7 @@ class RegisterTest < StoryTest
   test "successful registration" do
     register_with email: 'liz@mcnamara-troy.com',
       password: 'yoplait',
-      username: 'liz'
+      profile_id: 'liz'
 
     assert page.has_no_css?('.error')
 
@@ -24,7 +24,7 @@ class RegisterTest < StoryTest
     register_with email: 'liz@mcnamara-troy.com',
       password: 'yoplait',
       password_confirmation: 'yoplait_not',
-      username: 'liz'
+      profile_id: 'liz'
 
     assert page.has_content?('does not match')
     assert User.all.empty?
@@ -32,22 +32,22 @@ class RegisterTest < StoryTest
 
   test "failed registration (no pw)" do
     register_with email: 'liz@mcnamara-troy.com',
-      username: 'liz'
+      profile_id: 'liz'
 
     assert page.has_content?('is not present')
     assert User.all.empty?
   end
 
-  test "failed registration (duplicate username)" do
+  test "failed registration (duplicate profile_id)" do
     register_with email: 'liz@mcnamara-troy.com',
       password: 'xyz',
-      username: 'zig'
+      profile_id: 'zig'
 
     visit '/logout'
 
     register_with email: 'quentin@mcnamara-troy.com',
       password: 'abc',
-      username: 'zig'
+      profile_id: 'zig'
 
     assert page.has_content?('is not unique')
 
@@ -55,10 +55,10 @@ class RegisterTest < StoryTest
     assert ! User.fetch('quentin@mcnamara-troy.com')
   end
 
-  test "failed registration (username too short)" do
+  test "failed registration (profile_id too short)" do
     register_with email: 'liz@mcnamara-troy.com',
       password: 'xyz',
-      username: 'z'
+      profile_id: 'z'
 
     assert User.all.empty?
   end

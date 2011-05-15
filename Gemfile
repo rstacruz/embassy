@@ -23,5 +23,5 @@ group :test do
   gem "test-unit-runner-failfast", require: "test/unit/runner/failfast"
   gem "ffaker", "~> 1.4.0"
   gem "spork", "~> 0.8.4"
-  gem "spork-testunit", "~> 0.0.5"
+  gem "spork-testunit", "~> 0.0.5", require: false
 end

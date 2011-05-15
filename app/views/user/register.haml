@@ -9,10 +9,10 @@
     %label Email:
     %input{type: 'text', name: 'user[email]', id: 'email', value: @user.email, placeholder: 'Email'}
     != show_errors_for :email
-  %p{field_attr(:username)}
+  %p{field_attr(:profile_id)}
     %label Username:
-    %input{type: 'text', name: 'user[username]', id: 'username', value: @user.username, placeholder: 'Username'}
-    != show_errors_for :username
+    %input{type: 'text', name: 'user[profile_id]', id: 'profile_id', value: @user.profile_id, placeholder: 'Username'}
+    != show_errors_for :profile_id
   %p{field_attr(:password)}
     %label Password:
     %input{type: 'password', name: 'user[password]', id: 'password', value: '', placeholder: 'Password'}

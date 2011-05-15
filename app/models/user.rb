@@ -32,11 +32,12 @@ class User < Sequel::Model
 
     errors.add(:password, 'is not present')  if @password.to_s.empty?
     errors.add(:password, 'does not match')  if (!@password.to_s.empty? || !@password_confirmation.to_s.empty?) && @password != @password_confirmation
-    errors.add(:username, 'is not present')  if @username.to_s.empty?
-    errors.add(:username, 'is not unique')   if Profile[@username]
+
+    errors.add(:profile_id, 'is not present')  if self.profile_id.to_s.empty?
+    errors.add(:profile_id, 'is not unique')   if Profile[self.profile_id]
 
     profile.valid?
-    errors[:username] += profile.errors[:id]
+    errors[:profile_id] += profile.errors[:id]
 
     validates_presence :email
     validates_unique :email
@@ -45,11 +46,17 @@ class User < Sequel::Model
 
   def profile
     @profile ||= Profile[profile_id]
-    @profile ||= Profile.new(id: @username, user: self)
+    @profile ||= profile_id ? Profile.new(id: profile_id, user: self) : Profile.new(user: self)
   end
 
   def profile=(obj)
-    @profile = (obj.is_a?(Profile) || Profile.new(obj))
+    @profile = obj.is_a?(Profile) ? obj : Profile.new(obj)
+    self[:profile_id] = @profile.id
+  end
+
+  def profile_id=(id)
+    @profile = nil
+    super
   end
 
   # Seed
@@ -71,26 +78,13 @@ class User < Sequel::Model
     abilities && abilities.can?(verb, noun)
   end
 
-  def username
-    @username ||= profile.id  if profile
-    @username
-  end
-
   def display_name
     profile && profile.display_name
   end
 
-  def username=(v)
-    @username = v
-  end
-
-  # ============================================================================ 
+  # ============================================================================
   # Hooks
 
-  def before_save
-    self.profile_id = self.profile.id  if self.profile
-  end
-  
   def after_create
     self.profile.save
   end
