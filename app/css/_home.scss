@@ -5,13 +5,15 @@
 
 
 .front-gallery ul li {
-  $height: 120px;
-  $width: 220px;
+  $height: 150px;
+  $item-height: $height + 60;
+  $width: 270px;
+  $margin: 25px;
 
   & {
     display: block;
-    height: $height + 50; width: $width;
-    margin-right: 10px;
+    height: $item-height; width: $width;
+    margin: 0 $margin;
     display: block; float: left; }
 
   a {
@@ -45,23 +47,23 @@
 
   &.blank img {
     opacity: 0.5; }
-}
 
-.front-gallery ul li.manifesto {
-  & {
-    background: #333;
-    text-align: right;
-    margin: 0; padding: 0 20px 0 60px; height: 170px * 2 - 50;
-    margin: 0 10px 0 -80px;
-    width: 450px; }
+  &.manifesto {
+    & {
+      text-align: right;
+      @include box-sizing(border-box);
+      margin: 0; padding: 0 20px 0 60px; height: $item-height * 2 - 60;
+      margin: 0 $margin 0 0;
+      width: 100%; height: auto; padding-bottom: 50px; text-align: center; }
+      //width: $width * 2 + $margin * 3; }
 
-  strong {
-    font: normal 14pt/1.5 oswald, sans-serif;
-    text-transform: uppercase;
-    display: block; font-size: 24pt;
-    margin-bottom: 15px; margin-top: 20px;
-    color: white; font-weight: normal; }
+    strong {
+      font: normal 14pt/1.5 oswald, sans-serif;
+      text-transform: uppercase;
+      display: block; font-size: 24pt;
+      margin-bottom: 15px; margin-top: 20px;
+      color: $text; font-weight: normal; }
 
-  span {
-    color: #999;
-    font: normal italic 13pt/1.5 georgia, serif; } }
+    span {
+      color: #999;
+      font: normal italic 13pt/1.5 georgia, serif; } } }
