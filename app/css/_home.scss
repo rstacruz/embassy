@@ -46,3 +46,22 @@
   &.blank img {
     opacity: 0.5; }
 }
+
+.front-gallery ul li.manifesto {
+  & {
+    background: #333;
+    text-align: right;
+    margin: 0; padding: 0 20px 0 60px; height: 170px * 2 - 50;
+    margin: 0 10px 0 -80px;
+    width: 450px; }
+
+  strong {
+    font: normal 14pt/1.5 oswald, sans-serif;
+    text-transform: uppercase;
+    display: block; font-size: 24pt;
+    margin-bottom: 15px; margin-top: 20px;
+    color: white; font-weight: normal; }
+
+  span {
+    color: #999;
+    font: normal italic 13pt/1.5 georgia, serif; } }
