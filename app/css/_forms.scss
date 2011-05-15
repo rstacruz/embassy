@@ -16,6 +16,9 @@ form {
   input {
     line-height: 100%; height: $height; }
 
+  textarea {
+    min-height: 150px; }
+
   p > label {
     vertical-align: top; height: $height; overflow: hidden;
     line-height: $height;
@@ -36,7 +39,7 @@ form {
       width: 25%; }
 
     span.error {
-      position: absolute; right: 6px; bottom: 3px;
+      position: absolute; right: 9px; bottom: 6px;
       @include border-radius(2px);
       font-size: $small; margin-left: 5px;
       background: #833; color: white; padding: 2px 5px; }

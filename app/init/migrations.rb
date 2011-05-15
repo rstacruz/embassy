@@ -71,5 +71,18 @@ class Main
       add_column :name, String
     end
   end
+
+  migration "v0.0.1 profile" do
+    database.alter_table :profiles do
+      add_column :location, String
+      add_column :website, String
+
+      add_column :biography, String
+
+      add_column :dribbble, String
+      add_column :twitter, String
+      add_column :behance, String
+    end
+  end
 end
 

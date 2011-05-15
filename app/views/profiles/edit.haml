@@ -5,14 +5,39 @@
 
 %form{action: '/profile/edit', method: 'post'}
   %fieldset
-    %p{field_attr(:username)}
-      %label Username:
-      %input{type: 'text', name: 'profile[id]', value: @profile.id, disabled: true}
-
-    %p{field_attr(:display_name)}
-      %label Display name:
+    %p.max.title.full{field_attr(:display_name)}
       %input{type: 'text', name: 'profile[display_name]', value: @profile.display_name}
       != show_errors_for :display_name
+
+  %fieldset
+    %p
+      %label Location:
+      %input{type: 'text', name: 'profile[location]', value: @profile.location}
+      != show_errors_for :location
+
+  %h3.legend Short biography
+  %fieldset
+    %p.full{field_attr(:biography)}
+      %textarea{name: 'profile[behance]'}
+        ~ @profile.biography
+      != show_errors_for :biography
+
+  %h3.legend Social media accounts
+  %p You may link your social media accounts here.
+
+  %fieldset
+    %p{field_attr(:behance)}
+      %label Behance ID:
+      %input{type: 'text', name: 'profile[behance]', value: @profile.behance}
+      != show_errors_for :behance
+    %p{field_attr(:twitter)}
+      %label Twitter ID:
+      %input{type: 'text', name: 'profile[twitter]', value: @profile.twitter}
+      != show_errors_for :twitter
+    %p{field_attr(:dribbble)}
+      %label Dribbble ID:
+      %input{type: 'text', name: 'profile[dribbble]', value: @profile.dribbble}
+      != show_errors_for :dribbble
 
   %p.submit
     %button(type='submit') Save

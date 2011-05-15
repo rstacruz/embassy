@@ -2,7 +2,7 @@ class Main
   module FormHelpers
     def show_errors_for(field)
       field = field.to_sym
-      if @errors && @errors[field]
+      if @errors && @errors[field].any?
         "<span class='error'>#{@errors[field].first}</span>"
       end
     end

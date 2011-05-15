@@ -34,6 +34,13 @@ class Profile < Sequel::Model
     errors.add(:id, 'must be between 3 to 20 characters')  unless (3..20).include?(id.size)
     errors.add(:id, 'can only contain letters, numbers and underscores')  unless id =~ /^[A-Za-z0-9_]+$/
     errors.add(:id, 'must start with a letter')  unless id =~ /^[a-z]/
+
+    [:behance, :dribbble, :twitter].each do |account|
+      val = self.send(account).downcase
+      self.send :"#{account}=", val  if self.send(account)
+
+      errors.add account, 'is an invalid format'  if val.to_s.size > 1 && !(val =~ /^[a-z][a-z0-9_]*$/)
+    end
   end
 
   def user=(v)
