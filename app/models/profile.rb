@@ -36,10 +36,10 @@ class Profile < Sequel::Model
     errors.add(:id, 'must start with a letter')  unless id =~ /^[a-z]/
 
     [:behance, :dribbble, :twitter].each do |account|
-      val = self.send(account).downcase
+      val = self.send(account).to_s.downcase
       self.send :"#{account}=", val  if self.send(account)
 
-      errors.add account, 'is an invalid format'  if val.to_s.size > 1 && !(val =~ /^[a-z][a-z0-9_]*$/)
+      errors.add account, 'is an invalid format'  if val.size > 1 && !(val =~ /^[a-z][a-z0-9_]*$/)
     end
   end
 

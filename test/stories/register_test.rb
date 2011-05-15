@@ -12,12 +12,22 @@ class RegisterTest < StoryTest
   test "successful registration" do
     register_with email: 'liz@mcnamara-troy.com',
       password: 'yoplait',
-      profile_id: 'liz'
+      profile_id: 'liz',
+      display_name: "Elizabeth Cruz"
 
     assert page.has_no_css?('.error')
 
     assert User.fetch('liz@mcnamara-troy.com')
     assert User.fetch('liz')
+  end
+
+  test "successful registration with display name" do
+    register_with email: 'liz@mcnamara-troy.com',
+      password: 'yoplait',
+      profile_id: 'liz',
+      display_name: "Elizabeth Cruz"
+
+    assert Profile['liz'].display_name == "Elizabeth Cruz"
   end
 
   test "failed registration (not matching)" do

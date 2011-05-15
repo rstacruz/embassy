@@ -13,6 +13,10 @@
     %label Username:
     %input{type: 'text', name: 'user[profile_id]', id: 'profile_id', value: @user.profile_id, placeholder: 'Username'}
     != show_errors_for :profile_id
+  %p{field_attr(:display_name)}
+    %label Your name:
+    %input{type: 'text', name: 'profile[display_name]', id: 'display_name', value: @user.profile.display_name, placeholder: 'Jason Smith'}
+    != show_errors_for :display_name
   %p{field_attr(:password)}
     %label Password:
     %input{type: 'password', name: 'user[password]', id: 'password', value: '', placeholder: 'Password'}

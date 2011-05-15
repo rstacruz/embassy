@@ -13,12 +13,17 @@ class Main
 
     begin
       @user.update(params['user'])
-      flash "Okay."
+      @user.profile.update(params['profile'])
+
+      flash "Welcome! You are now a member."
       login(User, @user.email, params['user']['password'])
       redirect '/'
 
     rescue Sequel::ValidationFailed
-      @errors = @user.errors
+      @user.delete  unless @user.new?
+      @errors = @user.errors.merge(@user.profile.errors)
+
+      flash "Check your form and try again."
       haml :'/user/register'
     end
   end
