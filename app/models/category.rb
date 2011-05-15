@@ -8,4 +8,14 @@ class Category < Sequel::Model
     left_id:    :category_id,
     right_id:   :project_id,
     join_table: :categories_projects
+
+  def self.update_data!
+    Main.seed.categories.sort.each do |name|
+      Category.create name: name
+    end
+  end
+
+  def title
+    name.gsub('_', ' ').capitalize
+  end
 end

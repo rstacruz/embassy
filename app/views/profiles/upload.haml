@@ -1,2 +1,7 @@
 - content_for :heading do
   %h1 Upload new project
+
+%form
+  %select
+    - Category.all.each do |c|
+      %option{value: c.name}= c.title

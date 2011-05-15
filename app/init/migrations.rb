@@ -60,5 +60,10 @@ class Main
       end
     end
   end
+
+  migration "v0.0.1 reseed categories" do
+    Main.reload_models!
+    Category.update_data!
+  end
 end
 
