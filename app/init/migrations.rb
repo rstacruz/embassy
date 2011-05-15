@@ -65,5 +65,11 @@ class Main
     Main.reload_models!
     Category.update_data!
   end
+
+  migration "v0.0.1 projects" do
+    database.alter_table :projects do
+      add_column :name, String
+    end
+  end
 end
 

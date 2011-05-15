@@ -14,6 +14,8 @@ class Main
   end
 
   get '/profile/upload' do
+    @project = Project.new
+
     haml :'profiles/upload'
   end
 end

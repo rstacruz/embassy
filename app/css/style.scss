@@ -5,6 +5,8 @@ $liteblue: #adf;
 $text: #333;
 @include ae-reset;
 
+.hide { display: none; }
+
 @import 'layout';
 @import 'login';
 @import 'chrome';

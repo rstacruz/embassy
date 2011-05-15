@@ -1,7 +1,22 @@
+- body_class 'form'
+- title 'Add new project'
+
 - content_for :heading do
   %h1 Upload new project
 
 %form
-  %select
-    - Category.all.each do |c|
-      %option{value: c.name}= c.title
+  %p.title.full.max
+    %label.hide{for: 'name'} Name:
+    %input#name{type: 'text', value: @project.name, placeholder: "Project name"}
+
+  %p.checkboxes.limited.full
+    %label Category:
+    %span.fields
+      - Category.all.each do |c|
+        - id = "category_#{c.name}"
+        %label{for: id}
+          != checkbox "category[#{c.name}]", false, id: id
+          %span= c.title
+
+  %p.submit
+    %button(type='submit') Next
