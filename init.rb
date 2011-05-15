@@ -1,9 +1,9 @@
-# Bundler
-require "gemist/require"
-
 # Loadables
 $:.unshift *Dir["./vendor/*/*/lib"]
 $:.unshift *Dir["./lib"]
+
+# Bundler
+require "gemist/require"
 
 class Main < Sinatra::Base
   set      :root, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
