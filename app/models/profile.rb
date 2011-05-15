@@ -1,7 +1,7 @@
 # A profile.
 #
 class Profile < Sequel::Model
-  RESTRICTED_NAMES = %w(profile you login logout register)
+  RESTRICTED_NAMES = %w(profile you login logout register explore admin)
 
   unrestrict_primary_key
 

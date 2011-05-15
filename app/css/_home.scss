@@ -1,0 +1,48 @@
+.front-gallery {
+  ul {
+    @include non-list; @include clearfix;
+    display: block; } }
+
+
+.front-gallery ul li {
+  $height: 120px;
+  $width: 220px;
+
+  & {
+    display: block;
+    height: $height + 50; width: $width;
+    margin-right: 10px;
+    display: block; float: left; }
+
+  a {
+    line-height: 1.4;
+    font-weight: normal;
+    color: $text; }
+
+  a:hover {
+    text-decoration: none; }
+
+  strong {
+    display: block; }
+
+  em {
+    color: #999; display: block;
+    font-size: 0.9em;
+    font-style: normal; }
+
+  img {
+    border: 0; display: block;
+    padding: 0;
+    background: #ddd;
+    width: $width;
+    height: $height; margin-bottom: 5px; }
+
+  a img {
+    opacity: 0.8; }
+
+  a:hover img {
+    opacity: 1.0; background: #999; }
+
+  &.blank img {
+    opacity: 0.5; }
+}

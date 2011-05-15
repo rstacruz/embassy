@@ -2,6 +2,7 @@
 
 $reset-font: arial, sans-serif;
 $liteblue: #adf;
+$text: #333;
 @include ae-reset;
 
 @import 'layout';
@@ -9,3 +10,4 @@ $liteblue: #adf;
 @import 'chrome';
 @import 'forms';
 @import 'forms-ext';
+@import 'home';

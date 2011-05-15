@@ -1,4 +1,17 @@
+- body_class 'home'
 - title "Welcome!"
 
-- content_for :heading do
-  %h1 Philippine Web Designers Network
+.front-gallery
+  %ul
+    - (0...16).each do |i|
+      - profile = @profiles[i]
+      - if profile
+        %li
+          %a{href: R(profile)}
+            %img
+            %strong= profile.display_name
+            %em Development, Design
+
+      - else
+        %li.blank
+          %img

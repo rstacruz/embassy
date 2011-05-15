@@ -31,7 +31,7 @@
 
 #logo::after { content: '+'; }
 
-#actions {
+#links, #actions {
   & {
     float: left; }
 
@@ -57,6 +57,11 @@
 
   a {
     font-weight: normal; } }
+
+#actions + #links {
+  ul::before {
+    font-size: 17pt; line-height: 18px; color: #ccc;
+    content: ' [ '; float: left; margin-left: 20px; margin-right: 10px; } }
 
 #aux {
   & {
