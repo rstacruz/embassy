@@ -13,6 +13,21 @@ class Main
     haml :'profiles/edit'
   end
 
+  post '/profile/edit' do
+    @profile = my_profile
+
+    begin
+      @profile.update params['profile']
+      flash "Updated your profile."
+
+      redirect '/profile/edit'
+
+    rescue Sequel::ValidationFailed
+      @errors = @profile.errors
+      haml :'profiles/edit'
+    end
+  end
+
   get '/profile/upload' do
     @project = Project.new
 

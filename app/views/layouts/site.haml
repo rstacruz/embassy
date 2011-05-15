@@ -4,6 +4,9 @@
 - content_for :body do
   != partial :'global/header'
   #content
+    - if flash?
+      #flash= flash
+
     - if content_for?(:heading)
       #heading
         != yield_content :heading
