@@ -7,7 +7,7 @@ gem "sass", "~> 3.1.1"
 gem "sinatra-content-for", require: "sinatra/content_for"
 gem "sinatra-support", require: "sinatra/support"
 gem "sinatra-sequel", "~> 0.9.0", require: "sinatra/sequel"
-gem "therubyracer-heroku", "0.8.1.pre3"
+gem "therubyracer-heroku", "0.8.1.pre3", require: false
 gem "sequel", "~> 3.23.0"
 gem "hashie", "~> 1.0.0"
 gem "shield", "~> 0.0.3"
