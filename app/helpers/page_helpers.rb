@@ -11,6 +11,10 @@ class Main
       @page_title = title  if title
       @page_title
     end
+
+    def content_for?(what)
+      ! yield_content(what).to_s.empty?
+    end
   end
 
   helpers PageHelpers

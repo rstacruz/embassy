@@ -1,7 +1,15 @@
+- content_for :head do
+  != google_font "Oswald"
+
 - content_for :body do
   != partial :'global/header'
   #content
+    - if content_for?(:heading)
+      #heading
+        != yield_content :heading
+
     != yield
+
   != partial :'global/footer'
 
 != partial :'layouts/base'

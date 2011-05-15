@@ -37,6 +37,7 @@ class UserTest < UnitTest
       assert User.fetch('edwardk') == @user
       assert User.fetch('EdwardK') == @user
       assert User.fetch('EDWARDK') == @user
+      assert User.fetch('EdWaRdK') == @user
     end
 
     test "profile access" do

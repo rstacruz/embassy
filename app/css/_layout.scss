@@ -2,10 +2,20 @@ body {
   background: #eee; }
 
 #content {
-  background: white; min-height: 500px;
+  min-height: 500px;
   width: 960px; margin: 10px auto 0 auto; padding: 10px; }
 
 #footer {
   text-align: center;
   color: #ccc;
   width: 960px; margin: 40px auto 0 auto; }
+
+body.form {
+  #content, #footer { 
+    width: 500px; }
+
+  form {
+    @include border-radius(4px);
+    @include shadow(1px 1px 0 rgba(black, 0.1));
+    background: #fafafa; padding: 10px 10px 10px 10px; }
+}

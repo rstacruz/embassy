@@ -1,0 +1,22 @@
+body.login {
+  #error {
+    background: #eee; color: #d22;
+    text-shadow: 1px 1px 0 rgba(white, 0.5);
+    padding: 4px 8px; margin: -8px -8px 20px -8px;
+    font-weight: bold;
+    text-align: center; }
+
+  #content, #footer {
+    width: 400px; }
+
+  #content {
+    margin-top: 100px; }
+
+  form p.full {
+    margin: 15px 10px; }
+
+  form input {
+    height: 48px; padding: 10px; font-size: 1.2em; }
+
+  form button {
+    @extend .big-button; } }

@@ -22,17 +22,21 @@ form {
     background: rgba(black, 0.1); padding: 5px; }
 
   p {
+    & {
+      position: relative; }
+
     label {
-      width: 100px; }
+      width: 25%; }
 
     span.error {
+      position: absolute; right: 6px; bottom: 3px;
       @include border-radius(2px);
       font-size: $small; margin-left: 5px;
       background: #833; color: white; padding: 2px 5px; }
   }
 
   input, textarea {
-    width: 300px;
+    width: 74%;
     padding: 4px;
     border: solid 1px #ccc;
     @include border-radius(2px);
@@ -51,5 +55,9 @@ form {
   p.submit {
     background: rgba(black, 0.1); padding: 10px;
     text-align: center; }
+
+  p.full {
+    label { display: none; }
+    input, textarea { width: 100%; } }
 }
 

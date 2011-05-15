@@ -1,0 +1,24 @@
+.button {
+  border: 0;
+  background: #555; color: #fff; text-shadow: 1px 1px 0 rgba(black, 0.2);
+  padding: 5px 20px; font-size: 8pt; font-weight: normal;
+  @include border-radius(2px);
+  text-transform: uppercase;
+  @include shadow(1px 1px 0 rgba(white, 0.5));
+  font: normal 8pt oswald, sans-serif;
+
+  &:hover {
+    background: #359; } }
+
+
+.big-button {
+  @extend .button;
+  font-size: 10pt; padding: 8px 50px; }
+
+
+form {
+  p.submit {
+    background: #eee; margin: 20px -8px -8px -8px; }
+}
+
+form button { @extend .button; }

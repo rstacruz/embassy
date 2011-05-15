@@ -1,4 +1,8 @@
-<h1>Register</h1>
+- body_class 'form register'
+- title "Register"
+
+- content_for :heading do
+  %h1 Register
 
 %form#register-form(action="/register" method="post")
   %p{field_attr(:email)}

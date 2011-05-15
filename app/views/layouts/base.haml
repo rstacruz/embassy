@@ -17,7 +17,9 @@
       -# elements & feature detects
       != modernizr
 
-  %body
+    != yield_content :head
+
+  %body{class: body_class}
     != yield_content :body
 
     - unless request.xhr?
