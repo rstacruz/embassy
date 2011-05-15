@@ -15,7 +15,7 @@ class Main
       @user.update(params['user'])
       @user.profile.update(params['profile'])
 
-      flash "Welcome! You are now a member."
+      flash t('user.flash.register_success')
       login(User, @user.email, params['user']['password'])
       redirect '/'
 
@@ -23,7 +23,7 @@ class Main
       @user.delete  unless @user.new?
       @errors = @user.errors.merge(@user.profile.errors)
 
-      flash "Check your form and try again."
+      flash t('user.flash.register_fail')
       haml :'/user/register'
     end
   end
@@ -40,7 +40,7 @@ class Main
     if login(User, params[:username], params[:password])
       redirect '/'
     else
-      @error = "Can't log you in."
+      flash t('user.flash.login_fail')
       haml :'user/login'
     end
   end
@@ -49,7 +49,7 @@ class Main
     ensure_authenticated!
     logout User
 
-    flash "You have logged out."
+    flash t('user.flash.logout_success')
     redirect '/'
   end
 

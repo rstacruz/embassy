@@ -11,6 +11,7 @@ gem "therubyracer-heroku", "0.8.1.pre3", require: false
 gem "sequel", "~> 3.23.0"
 gem "hashie", "~> 1.0.0"
 gem "shield", "~> 0.0.3"
+gem "i18n", "~> 0.5.0"
 
 group :development do
   gem "sqlite3", "~> 1.3.0"
