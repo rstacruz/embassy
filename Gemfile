@@ -9,9 +9,12 @@ gem "sinatra-support", require: "sinatra/support"
 gem "sinatra-sequel", "~> 0.9.0", require: "sinatra/sequel"
 gem "therubyracer-heroku", "0.8.1.pre3"
 gem "sequel", "~> 3.23.0"
-gem "sqlite3", "~> 1.3.0"
 gem "hashie", "~> 1.0.0"
 gem "shield", "~> 0.0.3"
+
+group :development do
+  gem "sqlite3", "~> 1.3.0"
+end
 
 group :test do
   gem "contest"
