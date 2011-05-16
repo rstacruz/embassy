@@ -23,3 +23,7 @@
     - (6-@projects.size).times do
       %li.blank
         %img
+
+- content_for :edit_actions do
+  %li
+    %a{href: '/profile/upload'}= t('folio_editor.add_new_project')

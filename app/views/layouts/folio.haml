@@ -15,4 +15,12 @@
 
     != yield
 
+- content_for :footer do
+  - if my_profile?
+    %nav#edit-actions
+      %h3
+        Hi.
+      %ul
+        != yield_content :edit_actions
+
 != partial :'layouts/base'

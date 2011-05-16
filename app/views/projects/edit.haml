@@ -1,11 +1,11 @@
 - body_class 'form'
-- title t('new_project.title')
+- title "Edit project"
 
 - content_for :heading do
-  %h1= t('new_project.title')
+  %h1 Edit project
 
 %form{method: 'post'}
   != partial :'projects/_form'
 
   %p.submit
-    %button(type='submit')= t('next')
+    %button(type='submit')= t('save')

@@ -1,0 +1,9 @@
+%p.title.full.max
+  %label.hide{for: 'name'}= tc('project.name')
+  %input#name{type: 'text', name: 'project[name]', value: @project.name, placeholder: t('project.project_name')}
+  != show_errors_for(:name)
+
+!= partial :'global/category_field',
+     record: @project,
+     prefix: 'project',
+     attrs: { class: 'limited full' }

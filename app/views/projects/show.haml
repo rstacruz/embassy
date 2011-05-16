@@ -8,3 +8,9 @@
       - @project.categories.each do |c|
         %a{href: R(:category, c)}= c.title
 
+- if @project.profile == my_profile
+  - content_for :edit_actions do
+    %li
+      %a{href: R(my_profile, @project, :edit)}= t('folio_editor.edit_project_info')
+    %li
+      %a{href: R(my_profile, @project, :add)}= t('folio_editor.add_images')

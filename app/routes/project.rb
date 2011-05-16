@@ -38,4 +38,27 @@ class Main
 
     haml :'projects/show', layout: :'layouts/folio'
   end
+
+  # Edit project
+  get '/:profile/:project/edit' do
+    pass  unless @project && my_profile?
+
+    haml :'projects/edit'
+  end
+
+  post '/:profile/:project_id/edit' do
+    begin
+      @project.update_attributes params['project']
+      @project.save
+
+      flash t('flash.success')
+      redirect R(my_profile, @project)
+
+    rescue Sequel::ValidationFailed
+      @errors = @project.errors
+
+      flash t('flash.validation_failed')
+      haml :'projects/edit'
+    end
+  end
 end

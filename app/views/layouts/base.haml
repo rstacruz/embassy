@@ -12,6 +12,7 @@
 
   %body{class: body_class}
     != yield_content :body
+    != yield_content :footer
 
     - unless request.xhr?
       != jquery

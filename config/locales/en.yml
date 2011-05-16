@@ -1,5 +1,6 @@
 en:
   next: "Next"
+  save: "Save"
 
   errors:
     is_not_present: "Required"
@@ -20,6 +21,11 @@ en:
 
   folio_nav:
     is_on_the_site: "is on the PWDO network"
+
+  folio_editor:
+    add_new_project: "Add new project"
+    edit_project_info: "Edit project info"
+    add_images: "Add images"
 
   user:
     flash:
