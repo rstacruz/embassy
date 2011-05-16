@@ -61,8 +61,6 @@ class RegisterTest < StoryTest
       display_name: 'Elizabeth Cruz',
       profile_name: 'lior'
 
-    save_and_open_page
-
     assert page.has_content?(t('errors.is_already_taken'))
 
     assert User.fetch('liz@mcnamara-troy.com')
