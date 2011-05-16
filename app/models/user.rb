@@ -21,8 +21,6 @@ class User < Sequel::Model
     user
   end
 
-  # ----------------------------------------------------------------------------
-
   def validate
     super
 
