@@ -4,8 +4,19 @@
 @import 'layout';
 @import 'chrome';
 
+#content {
+  width: 900px; margin: 0 auto; background: white; padding-bottom: 40px; }
+
+#header {
+  & {
+    -webkit-transition: opacity 0.3s linear;
+    opacity: 0.3; }
+
+  &:hover {
+    opacity: 1; } }
+
 section.projects {
-  $width: 220px;
+  $width: 250px;
   $height: 150px;
   $item-height: 230px;
   $padding: 25px;
@@ -28,6 +39,9 @@ section.projects {
   a:hover {
     text-decoration: none; }
 
+  a:hover img {
+    background: #333; }
+
   strong {
     display: block; }
 
@@ -35,3 +49,32 @@ section.projects {
     font-weight: normal;
     display: block; font-style: normal; }
 }
+
+hgroup.portfolio {
+  & {
+    padding: 0 25px;
+    margin: 10px 0 30px 0; }
+
+  h1, h5 {
+    margin: 0; padding: 0; }
+
+  h1 {
+    color: #888;
+    font: normal 18pt oswald, sans-serif;
+    font-size: 18pt; }
+
+  h5 {
+    font-weight: normal;
+    font-size: 1.2em; }
+
+  a {
+    color: #888; font-size: 0.7em;
+    background: rgba(black, 0.1);
+    padding: 2px 5px; @include border-radius(2px);
+    @include shadow(1px 1px 0 rgba(black, 0.2));
+    font-weight: normal; }
+
+  a:hover {
+    text-decoration: none;
+    background: rgba(black, 0.18); }
+  }

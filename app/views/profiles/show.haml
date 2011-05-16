@@ -1,19 +1,23 @@
-- content_for :heading do
-  %h1
-    = @profile.display_name
-    - @profile.categories.each do |c|
-      = c.title
-    = @profile.location
+%hgroup.portfolio
+  %h1= @profile.display_name
 
-  %section.projects
-    %ul
-      - @projects.each do |project|
-        %li
-          %a{href: R(@profile, project)}
-            %img
-            %strong= project.name
-            %em= project.main_category_titles.join(', ')
+  - if @profile.location?
+    %h5.location= @profile.location
 
-      - (6-@projects.size).times do
-        %li.blank
+  - if @profile.categories?
+    %h5.categories
+      - @profile.categories.each do |c|
+        %a{href: R(:category, c)}= c.title
+
+%section.projects
+  %ul
+    - @projects.each do |project|
+      %li
+        %a{href: R(@profile, project)}
           %img
+          %strong= project.name
+          %em= project.main_category_titles.join(', ')
+
+    - (6-@projects.size).times do
+      %li.blank
+        %img

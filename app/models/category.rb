@@ -26,4 +26,8 @@ class Category < Sequel::Model
     default = name.gsub('_', ' ').capitalize
     I18n::t(name, scope: 'categories', default: default)
   end
+
+  def to_param
+    name
+  end
 end

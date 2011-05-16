@@ -20,7 +20,7 @@ class Profile < Sequel::Model
   # ----------------------------------------------------------------------------
   # Constants
 
-  RESTRICTED_NAMES = %w(profile you login logout register explore admin)
+  RESTRICTED_NAMES = %w(profile you login logout register explore admin category members)
 
   # ----------------------------------------------------------------------------
   
@@ -58,6 +58,14 @@ class Profile < Sequel::Model
 
   def user
     @user ||= User[user_id]
+  end
+
+  def location?
+    ! location.to_s.empty?
+  end
+
+  def categories?
+    categories.any?
   end
 
   def to_param

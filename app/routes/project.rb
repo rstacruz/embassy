@@ -12,11 +12,13 @@ class Main
 
     begin
       @project.update params['project']
+
       flash t('flash.success')
       redirect R(my_profile, @project)
 
     rescue Sequel::ValidationFailed
       @errors = @project.errors
+
       flash t('flash.validation_failed')
       haml :'projects/new'
     end
@@ -34,6 +36,6 @@ class Main
   get '/:profile/:project' do
     pass  unless @project
 
-    haml :'projects/show'
+    haml :'projects/show', layout: :'layouts/folio'
   end
 end

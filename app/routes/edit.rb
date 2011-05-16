@@ -22,7 +22,7 @@ class Main
 
       flash t('edit_profile.flash.success')
 
-      redirect '/profile/edit'
+      redirect R(my_profile)
 
     rescue Sequel::ValidationFailed
       @errors = @profile.errors
