@@ -12,19 +12,19 @@ class ProjectTest < UnitTest
   test "#category_hash" do
     project = Project.spawn(profile: @profile)
 
-    project.category_hash = {
+    project.categories_hash = {
       alpha: "0", bravo: "1",
       charlie: "1", delta: "0"
     }
 
-    assert project.category_names == %w(bravo charlie)
+    project.category_names.should == %w(bravo charlie)
 
     project.save
 
-    assert project.category_names == %w(bravo charlie)
+    project.category_names.should == %w(bravo charlie)
 
     project = Project[project.id]
 
-    assert project.category_names == %w(bravo charlie)
+    project.category_names.should == %w(bravo charlie)
   end
 end
