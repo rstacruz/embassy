@@ -18,7 +18,7 @@
   %h3.legend Short biography
   %fieldset
     %p.full{field_attr(:biography)}
-      %textarea{name: 'profile[behance]'}
+      %textarea{name: 'profile[biography]'}
         ~ @profile.biography
       != show_errors_for :biography
 
