@@ -1,5 +1,5 @@
-# My project
-#### Description goes here
+# Embassy
+#### Online designer portfolio repository for PWDO
 
 Requirements
 ------------
