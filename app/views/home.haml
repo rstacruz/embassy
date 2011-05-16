@@ -1,17 +1,13 @@
 - body_class 'home'
-- title "Welcome!"
+- title t('home.title')
 
 .front-gallery
   %ul
     - (0...16).each do |i|
       - if i == 3
         %li.manifesto
-          %strong
-            The Philippine Web Designers Organization Network
-          %span
-            We are a group of professionals and hobbyists who create human interfaces
-            for the Web, champion the use of standards, accessibility & usability,
-            and aim to uplift the state of web design in the country.
+          %strong= t('home.manifesto.h')
+          %span=   t('home.manifesto.p')
 
       - profile = @profiles[i]
       - if profile

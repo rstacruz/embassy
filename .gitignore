@@ -23,6 +23,7 @@ log/*
 doc
 config/*
 !config/defaults
+!config/locales
 !config/README
 db/*.db
 .sass-cache
