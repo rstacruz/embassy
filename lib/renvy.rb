@@ -74,17 +74,18 @@ module REnvy
         @@test.send :assert_nothing_raised, &blk
       end
     end
+
+    def method_missing(meth, *args, &blk)
+      result = left.send(meth, *args, &blk)
+      unless @neg
+        @test.send :assert, result
+      else
+        @test.send :assert, ! result
+      end
+    end
   end
 
   class Matcher::Be < Matcher
-    def nil?
-      unless @neg
-        @@test.send :assert_nil, left
-      else
-        @@test.send :assert_not_nil, left
-      end
-    end
-
     def true!
       unless @neg
         @@test.send :assert, left
@@ -134,6 +135,9 @@ if __FILE__ == $0
 
       @foo.should.be.nil?
       1000.shouldnt.be.nil?
+
+      "".should.respond_to?(:empty?)
+      "".shouldnt.respond_to?(:lolwhat)
 
       shouldnt.raise { 2 + 2 }
       should.raise(ZeroDivisionError) { 2 / 0 }

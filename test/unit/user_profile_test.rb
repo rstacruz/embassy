@@ -5,9 +5,9 @@ class UserProfileTest < UnitTest
     u = User.spawn profile_name: 'jinx'
     u.save
 
-    assert u.profile.is_a?(Profile)
-    assert u.profile.name == 'jinx'
-    assert u.profile_name == 'jinx'
+    u.profile.should.is_a?(Profile)
+    u.profile.name.should == 'jinx'
+    u.profile_name.should == 'jinx'
   end
 
   test "profile autocreate 2" do
@@ -15,9 +15,9 @@ class UserProfileTest < UnitTest
     u.profile_name = 'jinx'
     u.save
 
-    assert u.profile.is_a?(Profile)
-    assert u.profile.name == 'jinx'
-    assert u.profile_name == 'jinx'
+    u.profile.should.is_a?(Profile)
+    u.profile.name.should == 'jinx'
+    u.profile_name.should == 'jinx'
   end
 
   test "profile autocreate 3" do
