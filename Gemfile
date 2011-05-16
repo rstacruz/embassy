@@ -22,6 +22,7 @@ group :test do
   gem "capybara"
   gem "test-unit", ">= 2.2.0", require: "test/unit"
   gem "test-unit-runner-failfast", require: "test/unit/runner/failfast"
+  gem "renvy"
   gem "ffaker", "~> 1.4.0"
   gem "spork", "~> 0.8.4"
   gem "spork-testunit", "~> 0.0.5", require: false
