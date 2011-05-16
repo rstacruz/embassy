@@ -24,4 +24,8 @@ class UnitTest < Test::Unit::TestCase
   setup do
     Main.models.each { |model| model.delete }
   end
+
+  def t(*a)
+    I18n::t *a
+  end
 end

@@ -5,6 +5,8 @@ en:
     is_not_present: "Required"
     is_not_a_valid_email: "Invalid email"
     must_be_between_3_and_20_characters: "Must be between 3 and 20 characters"
+    does_not_match: "Doesn't match"
+    is_already_taken: "Already taken"
 
   flash:
     success: "Done!"

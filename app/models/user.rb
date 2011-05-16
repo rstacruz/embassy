@@ -25,7 +25,7 @@ class User < Sequel::Model
     super
 
     errors.add(:password, 'is not present')  if @password.to_s.empty?
-    errors.add(:password, 'does not match')  if (!@password.to_s.empty? || !@password_confirmation.to_s.empty?) && @password != @password_confirmation
+    errors.add(:password, 'does not match')  if (!@password.to_s.empty? && !@password_confirmation.to_s.empty?) && @password != @password_confirmation
 
     if @profile
       @profile.valid?
@@ -86,7 +86,7 @@ class User < Sequel::Model
   end
 
   def before_validation
-    @profile = Profile.new(user: self, name: profile_name, display_name: display_name)
+    @profile ||= Profile.new(user: self, name: profile_name, display_name: display_name)
   end
 
   def before_destroy

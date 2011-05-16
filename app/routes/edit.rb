@@ -24,6 +24,11 @@ class Main
 
     rescue Sequel::ValidationFailed
       @errors = @profile.errors
+      p @profile.name
+      p Profile.all.map(&:name)
+      p @profile.new?
+
+      flash t('flash.validation_failed')
       haml :'profiles/edit'
     end
   end

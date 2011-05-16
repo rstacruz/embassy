@@ -16,7 +16,6 @@ class Main
       redirect R(my_profile, @project)
 
     rescue Sequel::ValidationFailed
-      p @project.category_ids
       @errors = @project.errors
       flash t('flash.validation_failed')
       haml :'projects/new'

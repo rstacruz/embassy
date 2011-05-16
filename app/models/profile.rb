@@ -1,6 +1,8 @@
 # A profile.
 #
 class Profile < Sequel::Model
+  include HasCategories
+
   unrestrict_primary_key
 
   one_to_many   :projects
@@ -32,6 +34,8 @@ class Profile < Sequel::Model
 
   def validate
     super
+
+    validates_unique :name
 
     errors.add(:name, 'is not allowed')  if RESTRICTED_NAMES.include?(name)
     errors.add(:name, 'must be between 3 to 20 characters')  unless (3..20).include?(name.size)

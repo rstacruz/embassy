@@ -3,7 +3,11 @@
 
   = "%s projects" % @projects.size
 
-  - @projects.each do |project|
-    %li
-      %a{href: R(@profile, project)}
-        = project.name
+  %section.projects
+    %ul
+    - @projects.each do |project|
+      %li
+        %a{href: R(@profile, project)}
+          %img
+          %strong= project.name
+          %em= project.main_category_titles.join(', ')

@@ -1,5 +1,9 @@
+require_relative 'has_categories'
+
 # A project.
 class Project < Sequel::Model
+  include HasCategories
+
   many_to_one   :user,
     class:      :User
 
@@ -20,32 +24,6 @@ class Project < Sequel::Model
   
   def validate
     validates_presence :name
-    errors.add(:categories, 'must have at least one')  if new? && self.category_ids.empty?
-  end
-
-  # ----------------------------------------------------------------------------
-  # Attributes
-  
-  def category_hash=(hash)
-    ids = hash.select { |_, v| v == "1" }.keys
-    @category_ids = ids
-  end
-
-  def category_ids
-    @category_ids ||= if new?
-      Array.new
-    else
-      categories.map(&:id)
-    end
-  end
-
-  # ----------------------------------------------------------------------------
-  # Hooks
-
-  def after_save
-    if category_ids.sort != categories.map(&:id).sort
-      remove_all_categories
-      category_ids.each { |id| add_category Category[id] }
-    end
+    errors.add(:category_names, 'must have at least one')  if new? && self.category_names.empty?
   end
 end

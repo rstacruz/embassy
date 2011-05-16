@@ -2,8 +2,8 @@ require File.expand_path("../../test_helper", __FILE__)
 
 class UserTest < UnitTest
   setup do
-    @user = User.spawn
-    @name = @user.profile_id
+    @user = User.spawn!
+    @name = @user.profile_name
   end
 
   test "profile autocreate" do
@@ -12,25 +12,25 @@ class UserTest < UnitTest
 
   test "restricted names" do
     begin
-      User.spawn profile_id: "login"
+      User.spawn! profile_name: "login"
       assert false
     rescue Sequel::ValidationFailed => e
-      assert e.errors[:profile_id].include?('is not allowed')
+      assert e.errors[:profile_name].include?('is not allowed')
     end
   end
 
   test "stupid number" do
     begin
-      User.spawn profile_id: "0ahu"
+      User.spawn! profile_name: "0ahu"
       assert false
     rescue Sequel::ValidationFailed => e
-      assert e.errors[:profile_id].include?('must start with a letter')
+      assert e.errors[:profile_name].include?('must start with a letter')
     end
   end
 
   describe "lowercase" do
     setup do
-      @user = User.spawn(profile_id: "EdwardK")
+      @user = User.spawn!(profile_name: "EdwardK")
     end
 
     test "user access" do
@@ -57,5 +57,11 @@ class UserTest < UnitTest
     @user.profile.destroy
     assert Profile.all.empty?
     assert User.all.empty?
+  end
+
+  test "dupe profile name" do
+    assert_raises Sequel::ValidationFailed do
+      user2 = User.spawn!(profile_name: @name)
+    end
   end
 end

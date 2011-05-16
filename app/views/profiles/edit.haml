@@ -39,6 +39,14 @@
       %input{type: 'text', name: 'profile[dribbble]', value: @profile.dribbble}
       != show_errors_for :dribbble
 
+  %h3.legend Category
+
+  %fieldset
+    != partial :'global/category_field',
+         record: @profile,
+         prefix: 'profile',
+         attrs: { class: 'limited full nolabel' }
+
   %p.submit
     %button(type='submit') Save
 

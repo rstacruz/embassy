@@ -1,0 +1,17 @@
+-# prefix ||= 'project'
+-# record ||= @project
+- attrs ||= Hash.new
+
+%p.checkboxes{field_attr(:category_names).merge(attrs)}
+  %label= tc('project.category')
+
+  %span.fields
+    - Category.all.each do |c|
+      - id = "category_#{c.name}"
+      %label{for: id}
+        - value = record.category_names.include?(c.name)
+        != checkbox "#{prefix}[category_hash][#{c.name}]", value, id: id
+        %span= c.title
+
+  != show_errors_for(:category_names)
+

@@ -2,7 +2,7 @@ require File.expand_path("../../test_helper", __FILE__)
 
 class UserProfileTest < UnitTest
   test "profile autocreate 4" do
-    u = User.build profile_name: 'jinx'
+    u = User.spawn profile_name: 'jinx'
     u.save
 
     assert u.profile.is_a?(Profile)
@@ -11,7 +11,7 @@ class UserProfileTest < UnitTest
   end
 
   test "profile autocreate 2" do
-    u = User.build
+    u = User.spawn
     u.profile_name = 'jinx'
     u.save
 
@@ -21,10 +21,21 @@ class UserProfileTest < UnitTest
   end
 
   test "profile autocreate 3" do
-    u = User.build.save
+    u = User.spawn!
 
     assert_raises RuntimeError do
       u.profile_name = 'jinx'
     end
+  end
+
+  test "profile edit" do
+    Category.spawn! name: 'advertising'
+    Category.spawn! name: 'animation'
+
+    user    = User.spawn!
+    profile = Profile[user.profile.name]
+
+    profile.update "display_name"=>"Rico Sta Cruz", "location"=>"", "biography"=>"", "behance"=>"", "twitter"=>"", "dribbble"=>"", "category_hash"=>{"advertising"=>"0", "animation"=>"1"}
+    profile.save
   end
 end

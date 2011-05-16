@@ -70,6 +70,9 @@ form {
     background: rgba(black, 0.1); padding: 10px;
     text-align: center; }
 
+  p.nolabel {
+    > label { display: none; } }
+
   p.checkboxes {
     .fields {
       width: 74%; display: inline-block; }

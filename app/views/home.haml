@@ -1,7 +1,7 @@
 - body_class 'home'
 - title t('home.title')
 
-.front-gallery
+%section.front-gallery
   %ul
     - (0...16).each do |i|
       - if i == 3
@@ -15,7 +15,7 @@
           %a{href: R(profile)}
             %img
             %strong= profile.display_name
-            %em Development, Design
+            %em= profile.main_category_titles.join(', ')
 
       - else
         %li.blank
