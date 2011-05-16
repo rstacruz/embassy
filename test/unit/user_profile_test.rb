@@ -23,7 +23,7 @@ class UserProfileTest < UnitTest
   test "profile autocreate 3" do
     u = User.spawn!
 
-    assert_raises RuntimeError do
+    should.raise RuntimeError do
       u.profile_name = 'jinx'
     end
   end
@@ -31,13 +31,23 @@ class UserProfileTest < UnitTest
   test "profile edit" do
     Category.spawn! name: 'advertising'
     Category.spawn! name: 'animation'
+    Category.spawn! name: 'design'
 
     user    = User.spawn!
     profile = Profile[user.profile.name]
 
-    profile.update "display_name"=>"Rico Sta Cruz", "location"=>"", "biography"=>"", "behance"=>"", "twitter"=>"", "dribbble"=>"", "category_hash"=>{"advertising"=>"0", "animation"=>"1"}
+    profile.update "display_name"=>"Rico Sta Cruz",
+      "categories_hash"=>{"advertising"=>"1", "animation"=>"1", "design"=>"0"}
+
     profile.save
 
-    %w(advertising animation).should == profile.categories.map(&:name).sort
+    profile.categories.map(&:name).sort.should == %w(advertising animation)
+
+    profile.update "display_name"=>"Rico Sta Cruz",
+      "categories_hash"=>{"advertising"=>"0", "animation"=>"1","design"=>"1"}
+
+    profile.save
+
+    profile.categories.map(&:name).sort.should == %w(animation design)
   end
 end

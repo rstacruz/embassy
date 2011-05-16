@@ -17,9 +17,9 @@ module HasCategories
   # ----------------------------------------------------------------------------
   # Attributes
 
-  def category_hash=(hash)
-    ids = hash.select { |_, v| v == "1" }.keys.map(&:to_s)
-    @category_names = ids
+  def categories_hash=(hash)
+    names = hash.select { |_, v| v == "1" }.keys.map(&:to_s)
+    self.category_names = names
   end
 
   def category_names
@@ -56,7 +56,7 @@ module HasCategories
   def after_save
     super
 
-    if category_names.sort != categories.map(&:id).sort
+    if category_names.sort != categories.map(&:name).sort
       remove_all_categories
       category_names.each { |id| add_category Category[id] }
     end

@@ -1,5 +1,6 @@
 # Sequel
 Sequel::Model.plugin :validation_helpers
+Sequel::Model.plugin :update_attributes
 
 Sequel.extension :inflector
 Sequel.extension :pagination
@@ -27,4 +28,3 @@ class Main
   register Sinatra::SequelExtension
   helpers  Sinatra::SequelHelper
 end
-

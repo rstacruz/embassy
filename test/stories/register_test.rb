@@ -1,14 +1,6 @@
 require File.expand_path("../../story_helper", __FILE__)
 
 class RegisterTest < StoryTest
-  def register_with(hash)
-    hash[:password_confirmation] ||= hash[:password]
-
-    visit '/register'
-    hash.each { |field, value| fill_in field.to_s, with: value }
-    click_button "Register"
-  end
-
   test "successful registration" do
     register_with email: 'liz@mcnamara-troy.com',
       password: 'yoplait',

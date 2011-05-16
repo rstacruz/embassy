@@ -9,7 +9,11 @@ require 'test/unit'
 #   obj.should != 3
 #   obj.should.be.true!
 #   obj.should.be.false!
-#   obj.should.be.nil?
+#
+#   # Anything else will just pass thru:
+#   obj.should.nil?     # same as: assert obj.nil?
+#   obj.should.be.nil?  # same as: assert obj.nil?
+#   obj.should.respond_to?(:freeze)
 #   
 #   # You can also use shouldnt:
 #   obj.shouldnt == 3

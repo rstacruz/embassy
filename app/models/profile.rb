@@ -68,14 +68,17 @@ class Profile < Sequel::Model
   # Hooks
 
   def before_validation
+    super
     self.name = self.name.to_s.downcase
   end
 
   def before_save
+    super
     self.user_id = self.user.id  if self.user
   end
 
   def before_destroy
+    super
     self.user.delete
   end
 end

@@ -10,7 +10,7 @@
       - id = "category_#{c.name}"
       %label{for: id}
         - value = record.category_names.include?(c.name)
-        != checkbox "#{prefix}[category_hash][#{c.name}]", value, id: id
+        != checkbox "#{prefix}[categories_hash][#{c.name}]", value, id: id
         %span= c.title
 
   != show_errors_for(:category_names)

@@ -17,16 +17,15 @@ class Main
     @profile = my_profile
 
     begin
-      @profile.update params['profile']
+      @profile.update_attributes params['profile']
+      @profile.save
+
       flash t('edit_profile.flash.success')
 
       redirect '/profile/edit'
 
     rescue Sequel::ValidationFailed
       @errors = @profile.errors
-      p @profile.name
-      p Profile.all.map(&:name)
-      p @profile.new?
 
       flash t('flash.validation_failed')
       haml :'profiles/edit'
