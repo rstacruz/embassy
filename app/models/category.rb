@@ -15,7 +15,15 @@ class Category < Sequel::Model
     end
   end
 
+  def self.[](id)
+    super || first(name: id)
+  end
+
+  # ----------------------------------------------------------------------------
+  # Attributes
+
   def title
-    name.gsub('_', ' ').capitalize
+    default = name.gsub('_', ' ').capitalize
+    I18n::t(name, scope: 'categories', default: default)
   end
 end

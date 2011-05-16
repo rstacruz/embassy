@@ -1,2 +1,9 @@
 - content_for :heading do
   %h1= @profile.display_name
+
+  = "%s projects" % @projects.size
+
+  - @projects.each do |project|
+    %li
+      %a{href: R(@profile, project)}
+        = project.name

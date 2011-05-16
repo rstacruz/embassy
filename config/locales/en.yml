@@ -1,4 +1,14 @@
 en:
+  next: "Next"
+
+  errors:
+    is_not_present: "Required"
+
+  flash:
+    success: "Done!"
+    validation_failed: "Sorry, check your form and try again."
+    fail: "Ohshi-"
+
   user:
     flash:
       register_success: "Cheers! You are now a member."
@@ -26,3 +36,19 @@ en:
         We are a group of professionals and hobbyists who create human interfaces
         for the Web, champion the use of standards, accessibility & usability,
         and aim to uplift the state of web design in the country.
+
+  edit_profile:
+    flash:
+      success: "Your profile has been updated."
+
+  new_project:
+    title: "Add a new project"
+
+  project:
+    # Fields
+    category: "Category"
+    name: "Name"
+    project_name: "Project name"
+
+  categories:
+    php: "PHP"

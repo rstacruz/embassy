@@ -1,9 +1,9 @@
 # A profile.
 #
 class Profile < Sequel::Model
-  RESTRICTED_NAMES = %w(profile you login logout register explore admin)
-
   unrestrict_primary_key
+
+  one_to_many   :projects
 
   many_to_many  :categories,
     left_id:    :profile_id,
@@ -15,6 +15,13 @@ class Profile < Sequel::Model
     right_id:   :image_id,
     join_table: :images_profiles
 
+  # ----------------------------------------------------------------------------
+  # Constants
+
+  RESTRICTED_NAMES = %w(profile you login logout register explore admin)
+
+  # ----------------------------------------------------------------------------
+  
   def initialize(*a)
     super
     self.display_name ||= self.id

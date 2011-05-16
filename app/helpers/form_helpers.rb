@@ -3,7 +3,12 @@ class Main
     def show_errors_for(field)
       field = field.to_sym
       if @errors && @errors[field].any?
-        "<span class='error'>#{@errors[field].first}</span>"
+        message = @errors[field].first
+        id      = message.gsub(' ', '_')
+
+        message = t(id, scope: 'errors', default: message)
+
+        "<span class='error'>#{message}</span>"
       end
     end
 

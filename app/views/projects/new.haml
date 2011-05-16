@@ -1,0 +1,26 @@
+- body_class 'form'
+- title t('new_project.title')
+
+- content_for :heading do
+  %h1= t('new_project.title')
+
+%form{method: 'post'}
+  %p.title.full.max
+    %label.hide{for: 'name'}= tc('project.name')
+    %input#name{type: 'text', name: 'project[name]', value: @project.name, placeholder: t('project.project_name')}
+    != show_errors_for(:name)
+
+  %p.checkboxes.limited.full
+    %label= tc('project.category')
+
+    %span.fields
+      - Category.all.each do |c|
+        - id = "category_#{c.name}"
+        %label{for: id}
+          - value = @project.category_ids.include?(c.name)
+          != checkbox "project[category_hash][#{c.name}]", value, id: id
+          %span= c.title
+    != show_errors_for(:categories)
+
+  %p.submit
+    %button(type='submit')= t('next')

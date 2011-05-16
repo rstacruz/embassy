@@ -4,7 +4,8 @@ class Main
   end
 
   get '/:profile' do |id|
-    @profile = Profile[id] or pass
+    pass unless  @profile
+    @projects = @profile.projects
     
     haml :'profiles/show'
   end

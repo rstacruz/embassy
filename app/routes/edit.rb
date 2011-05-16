@@ -18,7 +18,7 @@ class Main
 
     begin
       @profile.update params['profile']
-      flash "Updated your profile."
+      flash t('edit_profile.flash.success')
 
       redirect '/profile/edit'
 
@@ -26,11 +26,5 @@ class Main
       @errors = @profile.errors
       haml :'profiles/edit'
     end
-  end
-
-  get '/profile/upload' do
-    @project = Project.new
-
-    haml :'profiles/upload'
   end
 end
