@@ -5,27 +5,35 @@
   %h1= t('register.title')
 
 %form#register-form(action="/register" method="post")
+
   %fieldset
     %p{field_attr(:email)}
       %label= tc('user.email')
       %input{type: 'text', name: 'user[email]', id: 'email', value: @user.email, placeholder: t('user.email')}
       != show_errors_for :email
-    %p{field_attr(:profile_id)}
+
+    %p{field_attr(:profile_name)}
       %label= tc('user.username')
-      %input{type: 'text', name: 'user[profile_id]', id: 'profile_id', value: @user.profile_id, placeholder: t('user.username')}
-      != show_errors_for :profile_id
+      %input{type: 'text', name: 'user[profile_name]', id: 'profile_name', value: @user.profile_name, placeholder: t('user.username')}
+      != show_errors_for :profile_name
+
     %p{field_attr(:display_name)}
       %label= tc('user.your_name')
-      %input{type: 'text', name: 'profile[display_name]', id: 'display_name', value: @user.profile.display_name, placeholder: t('user.sample_name')}
+      %input{type: 'text', name: 'user[display_name]', id: 'display_name', value: @user.display_name, placeholder: t('user.sample_name')}
       != show_errors_for :display_name
+
   %h3.legend= t('user.password')
+
   %fieldset
     %p{field_attr(:password)}
       %label= tc('user.password')
       %input{type: 'password', name: 'user[password]', id: 'password', value: '', placeholder: t('user.password')}
       != show_errors_for :password
+
     %p.password_confirmation
       %label= tc('user.confirm')
       %input{type: 'password', name: 'user[password_confirmation]', id: 'password_confirmation', value: '', placeholder: t('user.confirm_password')}
+      != show_errors_for :password
+
   %p.submit
     %button(type='submit')= t('register.submit')

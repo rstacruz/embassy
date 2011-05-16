@@ -13,15 +13,13 @@ class Main
 
     begin
       @user.update(params['user'])
-      @user.profile.update(params['profile'])
 
       flash t('user.flash.register_success')
       login(User, @user.email, params['user']['password'])
       redirect '/'
 
     rescue Sequel::ValidationFailed
-      @user.delete  unless @user.new?
-      @errors = @user.errors.merge(@user.profile.errors)
+      @errors = @user.errors
 
       flash t('user.flash.register_fail')
       haml :'/user/register'

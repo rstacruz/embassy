@@ -24,23 +24,21 @@ class Profile < Sequel::Model
   
   def initialize(*a)
     super
-    self.display_name ||= self.id
   end
 
   def self.[](key)
-    super key.to_s.downcase
+    super || first(name: key.to_s.downcase)
   end
 
   def validate
     super
-    self.id = self.id.downcase  if self.id.is_a?(String)
 
-    id = self.id.to_s
+    errors.add(:name, 'is not allowed')  if RESTRICTED_NAMES.include?(name)
+    errors.add(:name, 'must be between 3 to 20 characters')  unless (3..20).include?(name.size)
+    errors.add(:name, 'can only contain letters, numbers and underscores')  unless name =~ /^[A-Za-z0-9_]+$/
+    errors.add(:name, 'must start with a letter')  unless name =~ /^[a-z]/
 
-    errors.add(:id, 'is not allowed')  if RESTRICTED_NAMES.include?(id)
-    errors.add(:id, 'must be between 3 to 20 characters')  unless (3..20).include?(id.size)
-    errors.add(:id, 'can only contain letters, numbers and underscores')  unless id =~ /^[A-Za-z0-9_]+$/
-    errors.add(:id, 'must start with a letter')  unless id =~ /^[a-z]/
+    validates_presence :display_name
 
     [:behance, :dribbble, :twitter].each do |account|
       val = self.send(account).to_s.downcase
@@ -58,8 +56,16 @@ class Profile < Sequel::Model
     @user ||= User[user_id]
   end
 
-  # ============================================================================ 
+  def to_param
+    name
+  end
+
+  # ---------------------------------------------------------------------------- 
   # Hooks
+
+  def before_validation
+    self.name = self.name.to_s.downcase
+  end
 
   def before_save
     self.user_id = self.user.id  if self.user
