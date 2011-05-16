@@ -20,10 +20,21 @@ class Project < Sequel::Model
   many_to_one   :profile
 
   # ----------------------------------------------------------------------------
+  
+  def to_param
+    "#{id.to_i}-#{slugify(name)}"
+  end
+
+  # ----------------------------------------------------------------------------
   # Validations
   
   def validate
     validates_presence :name
     errors.add(:category_names, 'must have at least one')  if new? && self.category_names.empty?
+  end
+
+private
+  def slugify(str)
+    str.scan(/[A-Za-z0-9]+/).join('_').downcase
   end
 end

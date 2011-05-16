@@ -64,10 +64,6 @@ class Profile < Sequel::Model
     ! location.to_s.empty?
   end
 
-  def categories?
-    categories.any?
-  end
-
   def to_param
     name
   end

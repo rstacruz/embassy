@@ -3,29 +3,18 @@
     PWDO
 
   - if authenticated?
-    %nav#actions
-      %ul
-        %li
-          %a.you{href: R(my_profile)}
-            = my_profile.display_name
-        %li
-          %a{href: '/profile/edit'} Edit profile
-        %li
-          %a{href: '/profile/upload'} New project
+    != partial :'global/user_actions'
 
-  %nav#links
-    %ul
-      %li
-        %a{href: '/explore'} Explore
+  != partial :'global/site_links'
 
   %nav#aux
     %ul
       - if authenticated?
         %li
-          %a{href: '/logout'} Logout
+          %a{href: '/logout'}= t('nav.logout')
       - else
         %li
-          %a{href: '/login'} Login
+          %a{href: '/login'}= t('nav.login')
         %li
-          %a{href: '/register'} Register
+          %a{href: '/register'}= t('nav.register')
 

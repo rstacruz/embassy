@@ -4,8 +4,16 @@
 @import 'layout';
 @import 'chrome';
 
-#content {
-  width: 900px; margin: 0 auto; background: white; padding-bottom: 40px; }
+// Settings
+$width: 250px;
+$height: 150px;
+$item-height: 230px;
+$padding: 25px;
+
+body.portfolio #content {
+  padding: 50px; width: 850px;
+  margin: 0 auto; background: white; padding-bottom: 40px;
+  @include shadow(0 2px 3px rgba(black, 0.2)); }
 
 #header {
   & {
@@ -16,10 +24,7 @@
     opacity: 1; } }
 
 section.projects {
-  $width: 250px;
-  $height: 150px;
-  $item-height: 230px;
-  $padding: 25px;
+  margin: 0 -1 * $padding;
 
   ul {
     @include non-list; }
@@ -52,8 +57,7 @@ section.projects {
 
 hgroup.portfolio {
   & {
-    padding: 0 25px;
-    margin: 10px 0 30px 0; }
+    margin: 0 0 25px 0; }
 
   h1, h5 {
     margin: 0; padding: 0; }

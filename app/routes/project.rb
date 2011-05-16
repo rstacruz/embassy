@@ -27,7 +27,7 @@ class Main
   # Before filter (/rstacruz/192-kittenwar/*)
   before '/:profile/:project/?*' do |_, id, _|
     pass  unless @profile
-    @project = Project[id]  or pass
+    @project = Project[id.to_i]  or pass
 
     pass unless @project.profile == @profile
   end

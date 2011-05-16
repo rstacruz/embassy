@@ -1,6 +1,10 @@
 - title @project.name
+- body_class 'project'
 
 %hgroup.portfolio
   %h1= @project.name
+  - if @project.categories?
+    %h5.categories
+      - @project.categories.each do |c|
+        %a{href: R(:category, c)}= c.title
 
-HAHAHA

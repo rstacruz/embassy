@@ -13,6 +13,14 @@ en:
     validation_failed: "Sorry, check your form and try again."
     fail: "Ohshi-"
 
+  nav:
+    login: "Login"
+    logout: "Logout"
+    register: "Register"
+
+  folio_nav:
+    is_on_the_site: "is on the PWDO network"
+
   user:
     flash:
       register_success: "Cheers! You are now a member."

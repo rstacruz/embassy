@@ -14,9 +14,6 @@
 #   re.categories  #=> [Category['alpha'], Category['bravo']]
 #
 module HasCategories
-  # ----------------------------------------------------------------------------
-  # Attributes
-
   def categories_hash=(hash)
     names = hash.select { |_, v| v == "1" }.keys.map(&:to_s)
     self.category_names = names
@@ -48,6 +45,10 @@ module HasCategories
   # Returns a list of category titles for the top 3 cats.
   def main_category_titles
     main_categories.map(&:title)
+  end
+
+  def categories?
+    categories.any?
   end
 
   # ----------------------------------------------------------------------------

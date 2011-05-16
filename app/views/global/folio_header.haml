@@ -1,0 +1,8 @@
+%header#header
+  - if @profile
+    %nav.pair#owner
+      %a{href: R(@profile)}
+        %strong= @profile.display_name
+        %span= t('folio_nav.is_on_the_site')
+
+  != partial :'global/site_links'
