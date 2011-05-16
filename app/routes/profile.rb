@@ -7,6 +7,6 @@ class Main
     pass unless  @profile
     @projects = @profile.projects
     
-    haml :'profiles/show'
+    haml :'profiles/show', layout: :'layouts/folio'
   end
 end

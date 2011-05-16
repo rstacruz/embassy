@@ -1,11 +1,5 @@
 @import 'settings';
-
-$reset-font: arial, sans-serif;
-$liteblue: #adf;
-$text: #333;
 @include ae-reset;
-
-.hide { display: none; }
 
 @import 'layout';
 @import 'login';

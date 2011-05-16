@@ -4,20 +4,11 @@
   - unless request.xhr?
     %head
       %meta(charset='UTF-8')
-      -# Use the latest IE engine, or Chrome frame.
       %meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
-
-      -# Mobile viewport optimization. j.mp/bplateviewport
       %meta(name='viewport' content='width=device-width, initial-scale=1.0')
-
       %title!= title
-      %link(rel='stylesheet' media='screen' type='text/css' href='/css/style.css')
-
-      -# All JavaScript at the bottom, except for Modernizr which enables HTML5
-      -# elements & feature detects
       != modernizr
-
-    != yield_content :head
+      != yield_content :head
 
   %body{class: body_class}
     != yield_content :body

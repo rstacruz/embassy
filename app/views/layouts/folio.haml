@@ -1,9 +1,10 @@
 - content_for :head do
   != google_font "Oswald"
-  %link{rel: 'stylesheet', media: 'screen', type: 'text/css', href: "/css/style.css"}
+  %link{rel: 'stylesheet', media: 'screen', type: 'text/css', href: "/css/folio.css"}
 
 - content_for :body do
   != partial :'global/header'
+
   #content
     - if flash?
       #flash= flash
@@ -13,7 +14,5 @@
         != yield_content :heading
 
     != yield
-
-  != partial :'global/footer'
 
 != partial :'layouts/base'

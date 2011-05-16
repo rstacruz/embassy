@@ -1,13 +1,19 @@
 - content_for :heading do
-  %h1= @profile.display_name
-
-  = "%s projects" % @projects.size
+  %h1
+    = @profile.display_name
+    - @profile.categories.each do |c|
+      = c.title
+    = @profile.location
 
   %section.projects
     %ul
-    - @projects.each do |project|
-      %li
-        %a{href: R(@profile, project)}
+      - @projects.each do |project|
+        %li
+          %a{href: R(@profile, project)}
+            %img
+            %strong= project.name
+            %em= project.main_category_titles.join(', ')
+
+      - (6-@projects.size).times do
+        %li.blank
           %img
-          %strong= project.name
-          %em= project.main_category_titles.join(', ')

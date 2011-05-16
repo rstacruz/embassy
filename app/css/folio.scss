@@ -1,0 +1,37 @@
+@import 'settings';
+@include ae-reset;
+
+@import 'layout';
+@import 'chrome';
+
+section.projects {
+  $width: 220px;
+  $height: 150px;
+  $item-height: 230px;
+  $padding: 25px;
+
+  ul {
+    @include non-list; }
+
+  ul li {
+    float: left;
+    width: $width; height: $item-height;
+    margin: 0 $padding 0 $padding; display: block; }
+
+  img {
+    width: $width; height: $height; background: #ddd; }
+
+  a {
+    font-weight: normal;
+    color: $text; }
+
+  a:hover {
+    text-decoration: none; }
+
+  strong {
+    display: block; }
+
+  em {
+    font-weight: normal;
+    display: block; font-style: normal; }
+}
