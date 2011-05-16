@@ -27,7 +27,7 @@ class Profile < Sequel::Model
   end
 
   def self.[](key)
-    super || first(name: key.to_s.downcase)
+    super(key.to_i) || first(name: key.to_s.downcase)
   end
 
   def validate
