@@ -24,6 +24,7 @@ en:
 
   folio_editor:
     add_new_project: "Add new project"
+    edit_your_profile: "Edit your profile"
     edit_project_info: "Edit project info"
     add_images: "Add images"
 

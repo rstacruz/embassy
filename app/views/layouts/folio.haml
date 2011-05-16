@@ -18,8 +18,10 @@
 - content_for :footer do
   - if my_profile?
     %nav#edit-actions
-      %h3
-        Hi.
+      %h5
+        Tools
+      %a.home{href: R(my_profile)}
+        != "&laquo;"
       %ul
         != yield_content :edit_actions
 

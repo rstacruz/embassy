@@ -46,6 +46,7 @@ class Main
     haml :'projects/edit'
   end
 
+  # Edit project
   post '/:profile/:project_id/edit' do
     begin
       @project.update_attributes params['project']
@@ -61,4 +62,12 @@ class Main
       haml :'projects/edit'
     end
   end
+
+  # Add an image
+  get '/:profile/:project/add' do
+    pass  unless @project && my_profile?
+
+    haml :'projects/add'
+  end
+
 end

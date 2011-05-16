@@ -1,11 +1,11 @@
 #edit-actions {
   & {
     font-size: 8pt;
-    position: fixed; top: 100px; right: 0;
+    position: fixed; top: 60px; left: 10px;
     opacity: 0.95;
     -webkit-transition: opacity 0.2s linear;
-    @include border-left-radius(4px); width: 80px;
-    border-left: solid 3px #333;
+    @include border-radius(4px); width: 70px;
+    @include shadow(3px 3px 0 rgba(black, 0.1));
     background: #222; color: #888; }
 
   &:hover {
@@ -14,11 +14,27 @@
   ul {
     @include horiz-list; }
 
-  h3 {
-    margin: 0; padding: 15px 10px 15px 10px;
+  h5 {
+    background: #555;
+    @include border-top-radius(4px);
+    font-size: 6pt;
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0; padding: 3px 0 1px 0; }
+
+  a.home {
+    display: block;
+    background: #7bd;
+    color: #7bd * 0.9;
+    margin: 3px; padding: 5px 10px 5px 10px;
     font-weight: normal;
-    font-size: 13pt; text-align: center;
+    font-size: 10pt; text-align: center;
   }
+
+  a.home:hover {
+    background: #7bd * 1.1; }
 
   a {
     border-top: solid 1px rgba(white, 0.05);
