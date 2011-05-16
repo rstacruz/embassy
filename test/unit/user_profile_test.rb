@@ -37,5 +37,7 @@ class UserProfileTest < UnitTest
 
     profile.update "display_name"=>"Rico Sta Cruz", "location"=>"", "biography"=>"", "behance"=>"", "twitter"=>"", "dribbble"=>"", "category_hash"=>{"advertising"=>"0", "animation"=>"1"}
     profile.save
+
+    %w(advertising animation).should == profile.categories.map(&:name).sort
   end
 end

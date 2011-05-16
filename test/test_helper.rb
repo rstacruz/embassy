@@ -10,6 +10,7 @@ end
 require_relative '../init'
 require_relative 'factories'
 
+require 'renvy'
 require 'capybara/dsl'
 
 class UnitTest < Test::Unit::TestCase
