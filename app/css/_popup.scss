@@ -28,6 +28,8 @@
   }
 
   > .popup > .content {
+    min-width: 500px; min-height: 100px; display: block;
+    background: white url('/facebox/loading.gif') center center no-repeat;
     @include clearfix; }
 
   > .popup > .content, form {
