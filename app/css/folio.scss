@@ -11,9 +11,9 @@
 
 // Settings
 $width: 250px;
-$height: 156px;
-$item-height: 230px;
+$height: 187px;
 $padding: 25px;
+$item-height: $height + $padding*2 + 10;
 
 body {
   background: #eee; }

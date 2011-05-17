@@ -8,7 +8,7 @@ class Image < Sequel::Model
   def image
     Imagery.new :images, id,
       thumb: ["100x62^",  "100x62"],
-      small: ["250x156^", "250x156"],
+      small: ["250x187^", "250x187"],
       large: ["900x9000>"]
   end
 
