@@ -2,19 +2,6 @@
   %a#logo{href: '/'}
     PWDO
 
-  - if authenticated?
-    %nav#actions
-      %ul
-        %li.pair
-          %a.you{href: R(my_profile)}
-            %strong= my_profile.display_name
-            %span= "@%s" % my_profile.name
-
-        %li.pair
-          %a{href: '/profile/upload'}
-            %strong Add
-            %span new project
-
   %nav#links
     %ul
       %li.pair

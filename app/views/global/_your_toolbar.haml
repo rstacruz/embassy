@@ -1,7 +1,9 @@
 %nav#edit-actions
-  %h5
-    Tools
-  %a.home{href: R(my_profile)}
-    != "&laquo;"
+  %a.home{href: '/', title: 'Back to home'}
+    PWDO
+    
+  %a.profile{href: R(my_profile), title: 'Go to your profile'}
+    != "@%s" % my_profile.name
+
   %ul
     != yield_content :edit_actions

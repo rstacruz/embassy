@@ -14,7 +14,7 @@
   ul {
     @include horiz-list; }
 
-  h5 {
+  a.home {
     background: #555;
     @include border-top-radius(4px);
     font-size: 6pt;
@@ -22,18 +22,23 @@
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin: 0; padding: 3px 0 1px 0; }
+    margin: 0;
+    padding: 10px 0 8px 0;
 
-  a.home {
+    &:hover { 
+      background: #666; color: #444; } }
+
+  a.profile {
     display: block;
     background: #7bd;
-    color: #7bd * 0.9;
-    margin: 3px; padding: 5px 10px 5px 10px;
+    color: #7bd * 0.5;
+    margin: 3px; padding: 10px;
     font-weight: normal;
-    font-size: 10pt; text-align: center;
+    font-size: 8pt; text-align: center;
+    overflow: hidden;
   }
 
-  a.home:hover {
+  a.profile:hover {
     background: #7bd * 1.1; }
 
   a {
