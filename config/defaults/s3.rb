@@ -4,7 +4,8 @@ if ENV['AMAZON_ACCESS_KEY_ID'] &&
 
   Main.set :s3, Hashie::Mash.new(
     bucket: ENV['AMAZON_S3_BUCKET'],
-    host:   ENV['AMAZON_S3_ENDPOINT'] || 'http://s3.amazonaws.com')
+    host:   ENV['AMAZON_S3_ENDPOINT'] || 'http://s3.amazonaws.com',
+    domain: ENV['AMAZON_S3_DISTRIBUTION_DOMAIN'] || nil)
 
 else
 
