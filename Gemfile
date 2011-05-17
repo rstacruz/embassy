@@ -12,7 +12,7 @@ gem "sequel", "~> 3.23.0"
 gem "hashie", "~> 1.0.0"
 gem "shield", "~> 0.0.3"
 gem "i18n", "~> 0.5.0"
-gem "aws-s3", "~> 0.6.2"
+gem "aws-s3", "~> 0.6.2", require: "aws/s3"
 
 group :development do
   gem "sqlite3", "~> 1.3.0"

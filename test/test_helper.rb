@@ -30,6 +30,8 @@ class UnitTest < Test::Unit::TestCase
   end
 
   setup do
+    # Supress migration messages
+    Main.set :migrations_log, lambda { StringIO.new }
     Main.database.tables.each { |t| db[t].delete }
   end
 
