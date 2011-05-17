@@ -16,7 +16,7 @@ class Main
 
       flash t('user.flash.register_success')
       login(User, @user.email, params['user']['password'])
-      redirect '/'
+      redirect R(@user.profile)
 
     rescue Sequel::ValidationFailed
       @errors = @user.errors
