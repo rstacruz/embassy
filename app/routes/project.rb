@@ -66,7 +66,16 @@ class Main
   # Add an image
   get '/:profile/:project/add' do
     pass  unless @project && my_profile?
+    @image = Image.new(project: @project)
 
-    haml_popup :'projects/add'
+    haml_popup :'images/new'
+  end
+
+  # Add an image (post)
+  post '/:profile/:project/add' do
+    pass  unless @project && my_profile?
+    @image = Image.new(project: @project)
+
+    haml_popup :'images/new'
   end
 end

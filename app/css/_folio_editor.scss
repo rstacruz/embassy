@@ -1,7 +1,7 @@
 #edit-actions {
   & {
     font-size: 8pt;
-    position: fixed; top: 100px; left: 10px;
+    position: fixed; top: 30px; left: 10px;
     opacity: 0.95;
     -webkit-transition: opacity 0.2s linear;
     @include border-radius(4px); width: 70px;

@@ -1,0 +1,10 @@
+- body_class 'form'
+
+- content_for :heading do
+  %h1 Add new image
+
+%form{action: R(@profile, @project, :add), method: 'post'}
+  != partial :'images/_form'
+
+  %p.submit
+    %button{type: 'submit'}= t('save')

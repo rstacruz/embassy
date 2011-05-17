@@ -4,7 +4,7 @@
 - content_for :heading do
   %h1= t('new_project.title')
 
-%form{method: 'post'}
+%form{action: '/profile/upload', method: 'post'}
   != partial :'projects/_form'
 
   %p.submit
