@@ -14,13 +14,19 @@ $height: 156px;
 $item-height: 230px;
 $padding: 25px;
 
+body {
+  background: #eee; }
+
+body.project #content {
+  text-align: center; }
+
 body.portfolio #content {
-  padding: 50px; width: 850px;
-  margin: 0 auto; background: white; padding-bottom: 40px;
-  @include shadow(0 2px 3px rgba(black, 0.2)); }
+  padding: 50px; width: 850px; margin: 0 auto; }
 
 #header {
   & {
+    position: absolute; top: 0; left: 0; width: 100%;
+    @include box-sizing(border-box);
     -webkit-transition: opacity 0.3s linear;
     opacity: 0.3; }
 
@@ -66,6 +72,7 @@ section.projects {
     width: $width; height: $height; background: #ddd; }
 
   a {
+    text-align: center;
     font-weight: normal;
     color: $text; }
 
@@ -73,29 +80,33 @@ section.projects {
     text-decoration: none; }
 
   a:hover img {
+    outline: solid 3px rgba(black, 0.3);
     background: #333; }
 
   strong {
+    font-size: 1.1em; margin-bottom: -3px;
     display: block; }
 
   em {
-    font-weight: normal;
-    display: block; font-style: normal; }
+    font-weight: normal; color: #888;
+    font-family: times, serif;
+    display: block; font-style: italic; }
 }
 
 hgroup.portfolio {
   & {
+    text-align: center;
     margin: 0 0 25px 0; }
 
   h1, h5 {
     margin: 0; padding: 0; }
 
   h1 {
-    color: #888;
-    font: normal 18pt oswald, sans-serif;
-    font-size: 18pt; }
+    color: #333; text-transform: uppercase;
+    font: normal 23pt oswald, sans-serif; }
 
   h5 {
+    font-family: times, serif; font-style: italic; color: #888;
     font-weight: normal;
     font-size: 1.2em; }
 

@@ -6,11 +6,6 @@
   - if @profile.location?
     %h5.location= @profile.location
 
-  - if @profile.categories?
-    %h5.categories
-      - @profile.categories.each do |c|
-        %a{href: R(:category, c)}= c.title
-
 %section.projects
   %ul
     - @projects.each do |project|
