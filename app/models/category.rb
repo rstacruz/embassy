@@ -16,7 +16,7 @@ class Category < Sequel::Model
   end
 
   def self.[](id)
-    super || first(name: id)
+    super(id.to_i) || first(name: id)
   end
 
   # ----------------------------------------------------------------------------
