@@ -7,27 +7,32 @@ class Image < Sequel::Model
   end
 
   def project_id=(v)
+    @project = nil
     @project_id = v
   end
 
   def project_id
-    @project_id ||= projects.first && projects.first.id  unless new?
     @project_id
   end
 
   def project
-    @project ||= if new?
-      Project[project_id]
-    else
-      projects.first && projects.first.id
-    end
+    @project ||= Project[@project_id] || self.projects.first
   end
 
+  # ----------------------------------------------------------------------------
+
   def validate
-    errors.add :project, 'is required'  if new? && !@project_id
+    errors.add :project, 'is required'  if new? && !self.project
   end
 
   def after_save
-    self.project.save
+    project = self.project and begin
+      project.save
+
+      if self.projects.map(&:id) != [project.id]
+        remove_all_projects
+        add_project self.project
+      end
+    end
   end
 end

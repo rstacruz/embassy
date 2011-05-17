@@ -76,6 +76,18 @@ class Main
     pass  unless @project && my_profile?
     @image = Image.new(project: @project)
 
-    haml_popup :'images/new'
+    begin
+      @image.update_attributes(params['image'] || Hash.new)
+      @image.save
+
+      flash t('flash.success')
+      redirect R(my_profile, @project)
+
+    rescue Sequel::ValidationFailed
+      @errors = @image.errors
+
+      flash t('flash.validation_failed')
+      haml_popup :'images/new'
+    end
   end
 end

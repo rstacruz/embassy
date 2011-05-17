@@ -25,12 +25,12 @@ end
 
 def Project.spawn(hash={})
   hash[:name]           ||= Faker::Lorem.title
-  hash[:category_names] ||= [Category.random.name]
+  hash[:category_names] ||= [(Category.random || Category.spawn!).name]
 
   Project.new(hash)
 end
 
-def User.spawn!(hash={})
+def Project.spawn!(hash={})
   spawn(hash).save
 end
 

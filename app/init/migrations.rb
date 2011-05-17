@@ -74,5 +74,11 @@ class Main
     Main.reload_models!
     Category.update_data!
   end
+
+  migration "v0.0.2 images_projects typo" do
+    database.alter_table :images_projects do
+      rename_column :profile_id, :image_id
+    end
+  end
 end
 

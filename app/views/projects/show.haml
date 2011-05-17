@@ -8,6 +8,10 @@
       - @project.categories.each do |c|
         %a{href: R(:category, c)}= c.title
 
+%section.images
+  - @project.images.each do |image|
+    = image
+
 - if @project.profile == my_profile
   - content_for :edit_actions do
     %li

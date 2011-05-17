@@ -3,7 +3,8 @@
 - content_for :heading do
   %h1 Add new image
 
-%form{action: R(@profile, @project, :add), method: 'post', enctype: 'multipart/form-data'}
+%form{action: R(@profile, @project, :add), method: 'post'}
+  -#, enctype: 'multipart/form-data'}
   != partial :'images/_form'
 
   %p.submit
