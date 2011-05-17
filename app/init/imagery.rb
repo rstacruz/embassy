@@ -6,6 +6,10 @@ class Imagery # :nodoc:
     end
   end
 
+  module GM
+    CONVERT = "convert -size '%s' '%s' -resize '%s' %s '%s'"
+  end
+
   include Ext
 
   if Main.s3?
