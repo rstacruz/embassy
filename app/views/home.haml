@@ -13,7 +13,10 @@
       - if profile
         %li
           %a{href: R(profile)}
-            %img
+            - if profile.main_image
+              %img{src: profile.main_image.small_url}
+            - else
+              %img.blank
             %strong= profile.display_name
             %em= profile.main_category_titles.join(', ')
 

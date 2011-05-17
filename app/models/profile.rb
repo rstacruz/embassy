@@ -62,6 +62,14 @@ class Profile < Sequel::Model
     ! location.to_s.empty?
   end
 
+  def main_project
+    projects.first  if projects.any?
+  end
+
+  def main_image
+    main_project.main_image  if main_project
+  end
+
   def to_param
     name
   end
