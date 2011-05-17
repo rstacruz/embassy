@@ -1,3 +1,5 @@
+require_relative 'has_categories'
+
 # A profile.
 #
 class Profile < Sequel::Model

@@ -8,7 +8,9 @@ class Imagery # :nodoc:
 
   include Ext
 
-  # include Imagery::S3
-  # s3_bucket xxx
-  # self.root = './tmp'
+  if Main.s3?
+    include Imagery::S3
+    s3_bucket Main.s3.bucket
+    self.root = './tmp'
+  end
 end
