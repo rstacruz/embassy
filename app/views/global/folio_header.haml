@@ -1,8 +1,11 @@
 %header#header
-  - if @profile
+  - if @profile && R(@profile) != request.path
     %nav.pair#owner
       %a{href: R(@profile)}
+        %span Back to
         %strong= @profile.display_name
-        %span= t('folio_nav.is_on_the_site')
 
-  != partial :'global/site_links'
+  %nav#back
+    %a.pair{href: '/'}
+      %span Back to
+      %strong PWDO Network

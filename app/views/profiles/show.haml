@@ -24,8 +24,9 @@
       %li.blank
         %img
 
-- content_for :edit_actions do
-  %li
-    %a{href: '/profile/edit'}= t('folio_editor.edit_your_profile')
-  %li
-    %a{href: '/profile/upload'}= t('folio_editor.add_new_project')
+- if @profile == my_profile
+  - content_for :edit_actions do
+    %li
+      %a{href: '/profile/edit'}= t('folio_editor.edit_your_profile')
+    %li
+      %a{href: '/profile/upload'}= t('folio_editor.add_new_project')

@@ -16,4 +16,8 @@
 
   != partial :'global/footer'
 
+- content_for :footer do
+  - if authenticated?
+    != partial :'global/_your_toolbar'
+
 != partial :'layouts/base'

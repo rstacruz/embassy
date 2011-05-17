@@ -41,6 +41,9 @@ $header-height: 28px;
 
 #logo::after { content: '+'; }
 
+#header #back {
+  float: right; }
+
 #links, #actions, #owner {
   & {
     float: left; }

@@ -3,9 +3,29 @@
     PWDO
 
   - if authenticated?
-    != partial :'global/user_actions'
+    %nav#actions
+      %ul
+        %li.pair
+          %a.you{href: R(my_profile)}
+            %strong= my_profile.display_name
+            %span= "@%s" % my_profile.name
 
-  != partial :'global/site_links'
+        %li.pair
+          %a{href: '/profile/upload'}
+            %strong Add
+            %span new project
+
+  %nav#links
+    %ul
+      %li.pair
+        %a{href: '/members'}
+          %strong Members
+          %span directory
+
+      %li.pair
+        %a{href: '/explore'}
+          %strong Explore
+          %span projects
 
   %nav#aux
     %ul

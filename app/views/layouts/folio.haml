@@ -16,13 +16,7 @@
     != yield
 
 - content_for :footer do
-  - if my_profile?
-    %nav#edit-actions
-      %h5
-        Tools
-      %a.home{href: R(my_profile)}
-        != "&laquo;"
-      %ul
-        != yield_content :edit_actions
+  - if authenticated?
+    != partial :'global/_your_toolbar'
 
 != partial :'layouts/base'

@@ -15,6 +15,7 @@ en:
     fail: "Ohshi-"
 
   nav:
+    explore: "Explore"
     login: "Login"
     logout: "Logout"
     register: "Register"
