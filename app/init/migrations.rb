@@ -1,5 +1,5 @@
 class Main
-  migration "v0.0.2 create tables" do
+  migration "v0.0.3 create tables" do
     # Skip table creation if old tables are found.
     if database.tables == [:migrations]
       database.create_table :categories do
@@ -44,18 +44,10 @@ class Main
 
       database.create_table :images do
         primary_key :id
-
-        String :filename
-      end
-
-      database.create_table :images_profiles do
-        foreign_key :profile_id
-        foreign_key :image_id
-      end
-
-      database.create_table :images_projects do
         foreign_key :profile_id
         foreign_key :project_id
+
+        String :filename
       end
 
       database.create_table :categories_profiles do
@@ -70,15 +62,9 @@ class Main
     end
   end
 
-  migration "v0.0.2 reseed categories" do
+  migration "v0.0.3 reseed categories" do
     Main.reload_models!
     Category.update_data!
-  end
-
-  migration "v0.0.2 images_projects typo" do
-    database.alter_table :images_projects do
-      rename_column :profile_id, :image_id
-    end
   end
 end
 

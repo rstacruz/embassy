@@ -33,6 +33,10 @@ class UnitTest < Test::Unit::TestCase
     Main.database.tables.each { |t| db[t].delete }
   end
 
+  def R(*a)
+    Rtopia.R *a
+  end
+
   def t(*a)
     I18n::t *a
   end

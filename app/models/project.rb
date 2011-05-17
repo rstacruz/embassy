@@ -4,20 +4,15 @@ require_relative 'has_categories'
 class Project < Sequel::Model
   include HasCategories
 
-  many_to_one   :user,
-    class:      :User
+  many_to_one   :user
+  many_to_one   :profile
+
+  one_to_many   :images
 
   many_to_many  :categories,
     left_id:    :project_id,
     right_id:   :category_id,
     join_table: :categories_projects
-
-  many_to_many  :images,
-    left_id:    :project_id,
-    right_id:   :image_id,
-    join_table: :images_projects
-
-  many_to_one   :profile
 
   # ----------------------------------------------------------------------------
   

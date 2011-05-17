@@ -5,26 +5,6 @@
 #   Image.new image_file: '/path/to/image.jpg'
 #
 class Image < Sequel::Model
-  many_to_many :projects
-  many_to_many :profiles
-
-  def project=(v)
-    self.project_id = v.id
-  end
-
-  def project_id=(v)
-    @project = nil
-    @project_id = v
-  end
-
-  def project_id
-    @project_id
-  end
-
-  def project
-    @project ||= Project[@project_id] || self.projects.first
-  end
-
   def image
     Imagery.new :images, id,
       thumb: ["100x62^",  "100x62"],
@@ -48,6 +28,22 @@ class Image < Sequel::Model
     image.url(*a)
   end
 
+  def profile=(v)
+    self.profile_id = v.id
+  end
+
+  def profile
+    Profile[self.profile_id]
+  end
+
+  def project=(v)
+    self.project_id = v.id
+  end
+
+  def project
+    Project[self.project_id]
+  end
+
   def image_file=(fp)
     fp = fp[:tempfile]  if fp.is_a?(Hash) && fp[:tempfile]
     fp = File.open(fp)  if fp.is_a?(String)
@@ -64,18 +60,5 @@ class Image < Sequel::Model
 
   def after_save
     image.save(@image_file)  if @image_file
-
-    project = self.project and begin
-      project.save
-
-      if self.projects.map(&:id) != [project.id]
-        remove_all_projects
-        add_project self.project
-      end
-    end
-  end
-
-  def before_destroy
-    remove_all_projects
   end
 end

@@ -6,16 +6,12 @@ class Profile < Sequel::Model
   unrestrict_primary_key
 
   one_to_many   :projects
+  one_to_many   :images
 
   many_to_many  :categories,
     left_id:    :profile_id,
     right_id:   :category_id,
     join_table: :categories_profiles
-
-  many_to_many  :images,
-    left_id:    :profile_id,
-    right_id:   :image_id,
-    join_table: :images_profiles
 
   # ----------------------------------------------------------------------------
   # Constants

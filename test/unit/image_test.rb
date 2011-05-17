@@ -28,13 +28,10 @@ class ImageTest < UnitTest
   test "deletion" do
     image = Image.spawn!(project: @project)
 
-    db[:images_projects].all.should == [
-      { image_id: image.id, project_id: @project.id }
-    ]
+    @project.images.size.should == 1
 
     image.destroy
 
-    db[:images_projects].all.should.be.empty
-    @project.images.should.be.empty
+    Project[@project.id].images.should.be.empty
   end
 end
