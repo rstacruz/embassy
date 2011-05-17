@@ -2,7 +2,6 @@
 @include ae-reset;
 
 @import 'layout';
-@import 'chrome';
 @import 'folio_editor';
 
 // Settings
@@ -24,6 +23,30 @@ body.portfolio #content {
   &:hover {
     opacity: 1; } }
 
+#header {
+  & {
+    padding: 10px;
+    overflow: hidden; }
+
+  nav {
+    float: left; }
+
+  a {
+    color: $text; font-weight: normal; }
+
+  a:hover {
+    text-decoration: none; }
+
+  ul {
+    @include horiz-list; }
+
+  span, em {
+    font-style: normal; font-size: 0.9em; }
+
+  #back {
+    float: right; } }
+
+// Projects
 section.projects {
   margin: 0 -1 * $padding;
 

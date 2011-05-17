@@ -2,6 +2,14 @@
   %a#logo{href: '/'}
     PWDO
 
+  - if authenticated?
+    %nav#actions
+      %ul
+        %li.pair
+          %a.you{href: R(my_profile)}
+            %strong= my_profile.display_name
+            %span= my_profile.name
+
   %nav#links
     %ul
       %li.pair

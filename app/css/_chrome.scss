@@ -12,8 +12,8 @@ $header-height: 28px;
     @include border-radius(4px);
     font-size: 8pt; color: #aaa;
     padding: 10px;
-    /* background: #eee * 0.93; color: #aaa;
-    @include shadow(1px 1px 0 rgba(black, 0.1)); */
+    background: #eee * 0.93; color: #aaa;
+    @include shadow(1px 1px 0 rgba(black, 0.1));
     @include clearfix; }
 
   a {
