@@ -1,3 +1,5 @@
 ;(function($) {
-  // put stuff here
+  $(function() {
+    $("a[role*=popup]").facebox();
+  });
 })(jQuery);

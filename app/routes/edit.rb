@@ -10,7 +10,8 @@ class Main
 
   get '/profile/edit' do
     @profile = my_profile
-    haml :'profiles/edit'
+
+    haml_popup :'profiles/edit'
   end
 
   post '/profile/edit' do
@@ -28,7 +29,7 @@ class Main
       @errors = @profile.errors
 
       flash t('flash.validation_failed')
-      haml :'profiles/edit'
+      haml_popup :'profiles/edit'
     end
   end
 end

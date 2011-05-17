@@ -3,7 +3,7 @@ class Main
   get '/profile/upload' do
     @project = Project.new
 
-    haml :'projects/new'
+    haml_popup :'projects/new'
   end
 
   # Upload a new project (post)
@@ -20,7 +20,7 @@ class Main
       @errors = @project.errors
 
       flash t('flash.validation_failed')
-      haml :'projects/new'
+      haml_popup :'projects/new'
     end
   end
 

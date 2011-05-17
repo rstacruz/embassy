@@ -1,0 +1,5 @@
+#popup{class: body_class}
+  - if content_for?(:heading)
+    #heading!= yield_content(:heading)
+
+  != yield

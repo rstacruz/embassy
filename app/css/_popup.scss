@@ -1,0 +1,24 @@
+#popup {
+  max-width: 500px;
+
+  form {
+    @include shadow(0 0 3px rgba(black, 0.2));
+    background: #fafafa; }
+}
+
+#popup #heading {
+  background: #333; color: #999;
+  padding: 5px;
+  @include border-top-radius(4px);
+  text-align: center;
+  h1 { font-size: 1em; margin: 0; padding: 0; }
+}
+
+#facebox {
+  & {
+    padding-bottom: 30px; }
+
+  > .popup > .content {
+    @include clearfix; }
+  > .popup > .content, form {
+    @include border-radius(4px); } }
