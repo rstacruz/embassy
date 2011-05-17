@@ -8,6 +8,11 @@ Requirements
    - RVM: `rvm install 1.9.2`
    - Ubuntu: `sudo apt-get install ruby19`
 
+- **ImageMagick**
+  - OSX/Homebrew: `brew install imagemagick`
+  - OSX/MacPorts: `sudo port install imagemagick`
+  - Ubuntu: `sudo apt-get install imagemagick`
+
 - **[RVM](http://rvm.beginrescueend.com)** -- optional
 
 Setup
