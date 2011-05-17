@@ -1,9 +1,9 @@
 %nav#edit-actions
-  %a.home{href: '/', title: 'Back to home'}
-    PWDO
-    
-  %a.profile{href: R(my_profile), title: 'Go to your profile'}
-    != "@%s" % my_profile.name
+  %nav.main
+    %a.home{href: '/'}
+      PWDO
+      
+    %a.profile{href: R(my_profile), title: t('folio_editor.back_to_profile')}
+      != "@%s" % my_profile.name
 
-  %ul
-    != yield_content :edit_actions
+  != yield_content :edit_actions

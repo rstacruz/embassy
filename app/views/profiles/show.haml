@@ -25,7 +25,12 @@
 
 - if @profile == my_profile
   - content_for :edit_actions do
-    %li
-      %a{href: '/profile/edit', role: 'popup'}= t('folio_editor.edit_your_profile')
-    %li
-      %a{href: '/profile/upload', role: 'popup'}= t('folio_editor.add_new_project')
+    %nav
+      %h5 Profile
+      %ul
+        %li
+          %a.properties{href: '/profile/edit', role: 'popup', title: t('folio_editor.edit_your_profile')}
+            = t('folio_editor.edit_your_profile')
+        %li
+          %a.add{href: '/profile/upload', role: 'popup', title: t('folio_editor.add_new_project')}
+            = t('folio_editor.add_new_project')

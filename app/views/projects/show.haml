@@ -14,7 +14,18 @@
 
 - if @project.profile == my_profile
   - content_for :edit_actions do
-    %li
-      %a{href: R(my_profile, @project, :edit), role: 'popup'}= t('folio_editor.edit_project_info')
-    %li
-      %a{href: R(my_profile, @project, :add), role: 'popup'}= t('folio_editor.add_images')
+    %nav
+      %h5 Profile
+      %ul
+        %li
+          %a.back{href: R(my_profile), title: t('folio_editor.back_to_profile')}
+            = t('folio_editor.back_to_profile')
+    %nav
+      %h5 Project
+      %ul
+        %li
+          %a.properties{href: R(my_profile, @project, :edit), role: 'popup', title: t('folio_editor.edit_project_info')}
+            = t('folio_editor.edit_project_info')
+        %li
+          %a.add-image{href: R(my_profile, @project, :add), role: 'popup', title: t('folio_editor.add_images')}
+            = t('folio_editor.add_images')
