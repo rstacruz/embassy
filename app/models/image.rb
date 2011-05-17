@@ -9,7 +9,7 @@ class Image < Sequel::Model
     Imagery.new :images, id,
       thumb: ["100x62^",  "100x62"],
       small: ["250x156^", "250x156"],
-      large: ["900x", "900x"]
+      large: ["900x9000>", "900x9000>"]
   end
 
   def large_url
