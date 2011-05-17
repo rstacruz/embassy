@@ -86,16 +86,16 @@
       opacity      : 0.2,
       overlay      : true,
       loadingImage : '/facebox/loading.gif',
-      closeImage   : '',
+      closeImage   : '/facebox/closelabel.png',
       imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
-      faceboxHtml  : '\
-    <div id="facebox" style="display:none;"> \
-      <div class="popup"> \
-        <div class="content"> \
-        </div> \
-        <a href="#" class="close"></a> \
-      </div> \
-    </div>'
+      faceboxHtml  : ''+
+    '<div id="facebox" style="display:none;">'+
+      '<div class="popup">'+
+        '<div class="content">'+
+        '</div>'+
+        '<a href="#" class="close"><img src="/facebox/closelabel.png" title="close" class="close_image" /></a>'+
+      '</div>'+
+    '</div>'
     },
 
     loading: function() {
@@ -307,3 +307,4 @@
   })
 
 })(jQuery);
+
