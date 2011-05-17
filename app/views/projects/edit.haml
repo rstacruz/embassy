@@ -4,7 +4,7 @@
 - content_for :heading do
   %h1 Edit project
 
-%form{method: 'post'}
+%form{action: R(@profile, @project, :edit), method: 'post'}
   != partial :'projects/_form'
 
   %p.submit

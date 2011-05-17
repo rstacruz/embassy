@@ -43,7 +43,7 @@ class Main
   get '/:profile/:project/edit' do
     pass  unless @project && my_profile?
 
-    haml :'projects/edit'
+    haml_popup :'projects/edit'
   end
 
   # Edit project
@@ -59,7 +59,7 @@ class Main
       @errors = @project.errors
 
       flash t('flash.validation_failed')
-      haml :'projects/edit'
+      haml_popup :'projects/edit'
     end
   end
 
@@ -67,7 +67,6 @@ class Main
   get '/:profile/:project/add' do
     pass  unless @project && my_profile?
 
-    haml :'projects/add'
+    haml_popup :'projects/add'
   end
-
 end
