@@ -1,2 +1,3 @@
-%p.file.full
-  %input{type: 'file', name: 'image[file]'}
+%p.file.full{field_attr(:image_file)}
+  %input{type: 'file', name: 'image[image_file]'}
+  != show_errors_for :image_file

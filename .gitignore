@@ -29,3 +29,4 @@ db/*.db
 .sass-cache
 .rvmrc
 capybara-*.html
+public/images

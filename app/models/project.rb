@@ -25,6 +25,14 @@ class Project < Sequel::Model
     "#{id.to_i}-#{slugify(name)}"
   end
 
+  def main_image
+    images.first
+  end
+
+  def has_image?
+    ! main_image.nil?
+  end
+
   # ----------------------------------------------------------------------------
   # Validations
   

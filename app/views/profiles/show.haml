@@ -16,13 +16,16 @@
     - @projects.each do |project|
       %li
         %a{href: R(@profile, project)}
-          %img
+          - if project.has_image?
+            %img{src: project.main_image.small_url}
+          - else
+            %img.blank
           %strong= project.name
           %em= project.main_category_titles.join(', ')
 
     - (6-@projects.size).times do
       %li.blank
-        %img
+        %img.blank
 
 - if @profile == my_profile
   - content_for :edit_actions do

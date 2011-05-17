@@ -1,4 +1,4 @@
-%p.title.full.max
+%p.title.full.max{field_attr(:name)}
   %label.hide{for: 'name'}= tc('project.name')
   %input#name{type: 'text', name: 'project[name]', value: @project.name, placeholder: t('project.project_name')}
   != show_errors_for(:name)
