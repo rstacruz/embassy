@@ -42,4 +42,5 @@
     width: 40px; height: 40px;
     padding:2px;
     background: url('/facebox/close.png') 0 0 no-repeat;
+    img { display: none; }
     &:hover { background-position: -42px 0; } } }
