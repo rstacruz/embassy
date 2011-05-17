@@ -1,3 +1,5 @@
+require_relative 'config'
+
 class Main
   migration "v0.0.3 create tables" do
     # Skip table creation if old tables are found.
@@ -67,4 +69,3 @@ class Main
     Category.update_data!
   end
 end
-
