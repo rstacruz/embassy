@@ -41,6 +41,12 @@ class Project < Sequel::Model
     errors.add(:category_names, 'must have at least one')  if new? && self.category_names.empty?
   end
 
+  # ----------------------------------------------------------------------------
+
+  def before_destroy
+    remove_all_images
+  end
+
 private
   def slugify(str)
     str.scan(/[A-Za-z0-9]+/).join('_').downcase

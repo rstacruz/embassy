@@ -10,7 +10,7 @@ class UserProfileTest < UnitTest
     u.profile_name.should == 'jinx'
   end
 
-  test "profile autocreate 2" do
+  test "#profile_name= success" do
     u = User.spawn
     u.profile_name = 'jinx'
     u.save
@@ -20,10 +20,10 @@ class UserProfileTest < UnitTest
     u.profile_name.should == 'jinx'
   end
 
-  test "profile autocreate 3" do
+  test "#profile_name= fail" do
     u = User.spawn!
 
-    should.raise RuntimeError do
+    assert_raises RuntimeError do
       u.profile_name = 'jinx'
     end
   end

@@ -19,10 +19,6 @@ def User.spawn(hash={})
   User.new(hash)
 end
 
-def User.spawn!(hash={})
-  spawn(hash).save
-end
-
 def Project.spawn(hash={})
   hash[:name]           ||= Faker::Lorem.title
   hash[:category_names] ||= [(Category.random || Category.spawn!).name]
@@ -30,18 +26,22 @@ def Project.spawn(hash={})
   Project.new(hash)
 end
 
-def Project.spawn!(hash={})
-  spawn(hash).save
-end
-
 def Category.spawn(hash={})
   hash[:name] ||= word { |w| Category[w].nil? }
+
   Category.new(hash)
 end
 
-def Category.spawn!(hash={})
-  spawn(hash).save
+def Image.spawn(hash={})
+  hash[:image_file] ||= Main.root('test/fixtures/images/nyancat.png')
+
+  Image.new(hash)
 end
+
+def User.spawn!(hash={})      spawn(hash).save end
+def Image.spawn!(hash={})     spawn(hash).save end
+def Project.spawn!(hash={})   spawn(hash).save end
+def Category.spawn!(hash={})  spawn(hash).save end
 
 class Sequel::Model
   def self.random

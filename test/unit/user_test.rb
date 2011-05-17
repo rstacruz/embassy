@@ -6,8 +6,16 @@ class UserTest < UnitTest
     @name = @user.profile_name
   end
 
+  test "#delete" do
+    Profile.count.should == 1
+
+    @user.destroy
+
+    Profile.count.should == 0
+  end
+
   test "profile autocreate" do
-    assert Profile[@name] == @user.profile
+    Profile[@name].should == @user.profile
   end
 
   test "restricted names" do

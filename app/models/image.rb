@@ -1,6 +1,7 @@
 # == Usage
 #
-#   Image.new image_file: { tempfile: '/path/to/image.jpg' }
+#   Image.new image_file: { tempfile: File.open('/path/to/image.jpg') }
+#   Image.new image_file: File.open('/path/to/image.jpg')
 #   Image.new image_file: '/path/to/image.jpg'
 #
 class Image < Sequel::Model
@@ -49,6 +50,8 @@ class Image < Sequel::Model
 
   def image_file=(fp)
     fp = fp[:tempfile]  if fp.is_a?(Hash) && fp[:tempfile]
+    fp = File.open(fp)  if fp.is_a?(String)
+
     @image_file = fp
   end
 
@@ -70,5 +73,9 @@ class Image < Sequel::Model
         add_project self.project
       end
     end
+  end
+
+  def before_destroy
+    remove_all_projects
   end
 end

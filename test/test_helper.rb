@@ -13,6 +13,9 @@ require_relative 'factories'
 require 'renvy'
 require 'capybara/dsl'
 
+Imagery.send :include, Imagery::Faking
+Imagery.mode = :fake
+
 class UnitTest < Test::Unit::TestCase
   def fixture(file)
     File.open fixture_path(file)
@@ -22,8 +25,12 @@ class UnitTest < Test::Unit::TestCase
     Main.root "test", "fixtures", file
   end
 
+  def db
+    Main.database
+  end
+
   setup do
-    Main.models.each { |model| model.delete }
+    Main.database.tables.each { |t| db[t].delete }
   end
 
   def t(*a)

@@ -1,6 +1,6 @@
 require File.expand_path("../../story_helper", __FILE__)
 
-class ProfileTest < StoryTest
+class ProfileStory < StoryTest
   setup do
     names = %w(animation design fashion)
     names.each { |name| Category.spawn! name: name }

@@ -83,6 +83,7 @@ class Profile < Sequel::Model
 
   def before_destroy
     super
+    projects.each(&:destroy)
     self.user.delete
   end
 end

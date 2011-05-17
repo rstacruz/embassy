@@ -8,7 +8,7 @@ class ImageTest < UnitTest
   end
 
   test "image creation" do
-    image = Image.new(project: @project)
+    image = Image.spawn(project: @project)
     image.save
 
     image.project.should == @project
@@ -20,8 +20,21 @@ class ImageTest < UnitTest
   end
 
   test "multi images" do
-    images = (0..5).map { Image.new(project: @project).save }
+    images = (0..5).map { Image.spawn(project: @project).save }
 
     @project.images.should == images
+  end
+
+  test "deletion" do
+    image = Image.spawn!(project: @project)
+
+    db[:images_projects].all.should == [
+      { image_id: image.id, project_id: @project.id }
+    ]
+
+    image.destroy
+
+    db[:images_projects].all.should.be.empty
+    @project.images.should.be.empty
   end
 end

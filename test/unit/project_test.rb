@@ -27,4 +27,18 @@ class ProjectTest < UnitTest
 
     project.category_names.should == %w(bravo charlie)
   end
+
+  test "#destroy" do
+    project = Project.spawn!(profile: @profile)
+    image   = Image.spawn!(project: project)
+
+    db[:images_projects].all.should == [
+      { image_id: image.id, project_id: project.id }
+    ]
+
+    project.destroy
+
+    db[:images_projects].all.should.be.empty
+    Image[image.id].project.should.be.nil
+  end
 end
