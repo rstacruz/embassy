@@ -1,9 +1,9 @@
 class Imagery # :nodoc:
   module GM
-    CONVERT = "convert -size '%s' '%s' -resize '%s' %s '%s'"
+    CONVERT = "convert -size '%s' '%s' -resize '%s' %s -quality 95 '%s'"
   end
 
-  include Png
+  #include Png
   include Repropagate
 
   if Main.s3?
