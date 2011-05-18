@@ -41,6 +41,7 @@ class Imagery
       sizes.each do |size, (resize, extent)|
         next  unless [*size_names].include?(size)
 
+        FileUtils.mkdir_p(root)
         GM.convert original, root(ext(size)), resize, extent
 
         store size  if respond_to?(:store, true)
