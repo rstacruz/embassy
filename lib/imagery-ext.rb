@@ -42,14 +42,9 @@ class Imagery
         next  unless [*size_names].include?(size)
 
         GM.convert original, root(ext(size)), resize, extent
-      end
-    end
-  end
 
-  module S3Repropagate
-    def repropagate(size_names)
-      super
-      [*size_names].each { |size| store size }
+        store size  if respond_to?(:store, true)
+      end
     end
   end
 
