@@ -5,6 +5,7 @@ $:.unshift *Dir["./lib"]
 # Bundler
 require "gemist/require"
 require "imagery"
+require "imagery-ext"
 
 class Main < Sinatra::Base
   set      :root, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
