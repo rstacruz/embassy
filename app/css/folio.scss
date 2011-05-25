@@ -9,6 +9,8 @@
 @import 'popup';
 @import 'jquery-tiptip';
 
+form { @include form-style; }
+
 // Settings
 $width: 250px;
 $height: 187px;

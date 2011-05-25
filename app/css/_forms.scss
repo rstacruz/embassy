@@ -1,7 +1,7 @@
 $form-input-height: 32px !default;
 $form-accent:       #7bd !default;
 
-form {
+@mixin form-style {
   $normal: 1em;
   $small:  0.9em;
   $height: $form-input-height;
