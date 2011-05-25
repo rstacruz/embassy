@@ -35,6 +35,9 @@ gem "i18n", "~> 0.5.0"
 # Amazon S3 support
 gem "aws-s3", "~> 0.6.2", require: "aws/s3"
 
+# CSS extensions
+gem "compass", "~> 0.11.1", require: false
+
 group :development do
   gem "sqlite3", "~> 1.3.0"
 end

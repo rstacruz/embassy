@@ -1,5 +1,6 @@
 $form-input-height: 32px !default;
 $form-accent:       #7bd !default;
+$form-padding:      20px !default;
 
 @mixin form-style {
   $normal: 1em;
@@ -7,7 +8,7 @@ $form-accent:       #7bd !default;
   $height: $form-input-height;
   $accent: $form-accent;
 
-  padding: 20px;
+  padding: $form-padding;
 
   input, textarea {
     display: inline-block;

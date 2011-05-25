@@ -18,11 +18,17 @@ GEM
     celerity (0.8.9)
     childprocess (0.1.8)
       ffi (~> 1.0.6)
+    chunky_png (1.2.0)
+    compass (0.11.1)
+      chunky_png (~> 1.1)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
     contest (0.1.2)
     culerity (0.2.15)
     ffaker (1.4.0)
     ffi (1.0.7)
       rake (>= 0.8.7)
+    fssm (0.2.7)
     haml (3.0.18)
     hashie (1.0.0)
     i18n (0.5.0)
@@ -34,7 +40,7 @@ GEM
     rack-test (0.6.0)
       rack (>= 1.0)
     rake (0.8.7)
-    renvy (0.2.1)
+    renvy (0.2.2)
       test-unit
     rubyzip (0.9.4)
     sass (3.1.1)
@@ -74,6 +80,7 @@ PLATFORMS
 DEPENDENCIES
   aws-s3 (~> 0.6.2)
   capybara
+  compass (~> 0.11.1)
   contest
   ffaker (~> 1.4.0)
   haml (>= 3.0)

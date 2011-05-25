@@ -30,3 +30,4 @@ db/*.db
 .rvmrc
 capybara-*.html
 public/images
+tmp/
