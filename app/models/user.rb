@@ -27,7 +27,7 @@ class User < Sequel::Model
     errors.add(:password, 'is not present')  if @password.to_s.empty?
     errors.add(:password, 'does not match')  if (!@password.to_s.empty? && !@password_confirmation.to_s.empty?) && @password != @password_confirmation
 
-    if @profile
+    if @profile and new?
       @profile.valid?
       errors[:profile_name] += @profile.errors[:name]
       errors[:display_name] += @profile.errors[:display_name]
@@ -66,6 +66,10 @@ class User < Sequel::Model
 
   def display_name
     @display_name ||= (profile.display_name  if profile)
+  end
+
+  def to_s
+    email
   end
 
   def abilities
